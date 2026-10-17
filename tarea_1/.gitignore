@@ -32,3 +32,6 @@ __pycache__/
 !modelo/tokenizer*
 !modelo/vocab*
 !modelo/special_tokens_map.json
+.virtual_documents/
+Untitled.ipynb
+/tarea_1/350

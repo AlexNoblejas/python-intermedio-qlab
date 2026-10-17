@@ -24,11 +24,11 @@ Categorías: `politica`, `economia`, `deportes`, `ciencia_tecnologia`.
 
 | | |
 |---|---|
-| **Opción** | C — Comparada (200 de cada medio) |
+| **Opción** | C — Comparada (objetivo 200+200; ver limitación de volumen abajo) |
 | **Medios** | La República (`larepublica.pe`) · El Comercio (`elcomercio.pe`) |
-| **Fecha de descarga** | `COMPLETAR` |
-| **Ventana de publicación cubierta** | `COMPLETAR` |
-| **Volumen final** | `COMPLETAR` noticias (`COMPLETAR` LR + `COMPLETAR` EC) |
+| **Fecha de descarga** | 17 de octubre de 2026 |
+| **Ventana de publicación cubierta** | 8–17 de octubre de 2026 (~10 días; 1 nota atípica de abril se aísla) |
+| **Volumen final** | 408 noticias (59 La República + 349 El Comercio) |
 
 ### Cómo se extrajo, y por qué así
 
@@ -42,7 +42,7 @@ La recolección combina dos fuentes que el `robots.txt` **permite de forma expl�
 | Fuente | Qué aporta | Endpoint |
 |---|---|---|
 | RSS | Titular y bajada ya limpios, de las notas recientes | `larepublica.pe/rss/{sección}.xml` · `elcomercio.pe/arc/outboundfeeds/google-news-feed/category/{sección}/?outputType=xml` |
-| Sitemaps de sección | El volumen: cientos de URLs con fecha | `larepublica.pe/sitemap/{sección}.xml` · `elcomercio.pe/sitemap/{sección}/?outputType=xml` |
+| Sitemaps de sección | El volumen: cientos de URLs con fecha. El de El Comercio es un *índice* que apunta a sub-sitemaps, que el código sigue en profundidad | `larepublica.pe/sitemap/{sección}.xml` · `elcomercio.pe/sitemap/{sección}/?outputType=xml` |
 
 De cada nota del sitemap se leen los metadatos Open Graph (`og:title`, `og:description`),
 que es donde ambos diarios publican titular y bajada de forma estable.
