@@ -1,35 +1,32 @@
-# Tarea 1 — Python Intermedio (Diplomatura QLAB)
+# Tarea 1 — Del titular al clasificador
+# Dependencias exactas (Python 3.11). Instalar en un entorno limpio:
+#   python -m venv .venv && .venv\Scripts\activate   (Windows)
+#   pip install -r requirements.txt
 #
-# IMPORTANTE: estos son rangos probados, no versiones congeladas.
-# Cuando todo te corra bien, ejecuta  pip freeze > requirements.txt
-# para dejar las versiones exactas, que es lo que pide la rubrica.
+# numpy y pyarrow van pinneados juntos a proposito: pyarrow >=21 exige numpy 2.0,
+# y el proyecto corre sobre numpy 1.26, asi que se fija pyarrow 17 (compatible).
 
-# --- recoleccion (notebook 1) ---
-requests>=2.31,<3
-beautifulsoup4>=4.12,<5
-lxml>=5.1,<6
+# --- Nucleo de datos ---
+numpy==1.26.4
+pandas==2.1.4
+pyarrow==17.0.0
 
-# --- datos y graficos ---
-pandas>=2.2,<3
-numpy>=1.26,<3
-plotly>=5.20,<7
-matplotlib>=3.8,<4
-seaborn>=0.13,<1
+# --- Recoleccion (notebook 1: RSS + sitemaps) ---
+requests==2.31.0
+urllib3==2.0.7
+beautifulsoup4==4.12.2
+Brotli==1.0.9
+zstandard==0.19.0
 
-# --- modelado (notebook 2) ---
-torch>=2.2
-transformers>=4.40,<5
-datasets>=2.18
-scikit-learn>=1.4,<2
-accelerate>=0.29
+# --- Modelado (notebook 2: zero-shot, etiquetado, fine-tuning) ---
+torch==2.6.0
+transformers==5.20.1
+tokenizers==0.23.3
+safetensors==0.8.0
+scikit-learn==1.2.2
 
-# --- dashboard (parte 3) ---
-streamlit>=1.33,<2
-
-# --- entorno de notebooks ---
-jupyterlab>=4.1
-ipywidgets>=8.1
-
-# El etiquetado usa Ollama, que NO es un paquete de Python:
-#   instalalo desde https://ollama.com  y luego:  ollama pull qwen2.5:7b
-# El notebook habla con el por HTTP en http://localhost:11434
+# --- Visualizacion y dashboard ---
+plotly==5.9.0
+matplotlib==3.8.0
+seaborn==0.12.2
+streamlit==1.30.0
