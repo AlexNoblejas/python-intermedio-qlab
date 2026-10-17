@@ -1,0 +1,21 @@
+# Entornos
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Secretos
+.env
+*.key
+.streamlit/secrets.toml
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Material pesado del curso: grabaciones, no se versionan
+*.mp4
+*.mkv

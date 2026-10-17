@@ -1,0 +1,35 @@
+# Tarea 1 — Python Intermedio (Diplomatura QLAB)
+#
+# IMPORTANTE: estos son rangos probados, no versiones congeladas.
+# Cuando todo te corra bien, ejecuta  pip freeze > requirements.txt
+# para dejar las versiones exactas, que es lo que pide la rubrica.
+
+# --- recoleccion (notebook 1) ---
+requests>=2.31,<3
+beautifulsoup4>=4.12,<5
+lxml>=5.1,<6
+
+# --- datos y graficos ---
+pandas>=2.2,<3
+numpy>=1.26,<3
+plotly>=5.20,<7
+matplotlib>=3.8,<4
+seaborn>=0.13,<1
+
+# --- modelado (notebook 2) ---
+torch>=2.2
+transformers>=4.40,<5
+datasets>=2.18
+scikit-learn>=1.4,<2
+accelerate>=0.29
+
+# --- dashboard (parte 3) ---
+streamlit>=1.33,<2
+
+# --- entorno de notebooks ---
+jupyterlab>=4.1
+ipywidgets>=8.1
+
+# El etiquetado usa Ollama, que NO es un paquete de Python:
+#   instalalo desde https://ollama.com  y luego:  ollama pull qwen2.5:7b
+# El notebook habla con el por HTTP en http://localhost:11434

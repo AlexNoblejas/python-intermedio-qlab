@@ -1,0 +1,34 @@
+# --- pesos del modelo: GitHub rechaza archivos de mas de 100 MB ---
+modelo/*.safetensors
+modelo/*.bin
+modelo/*.pt
+modelo/*.h5
+modelo/checkpoints/
+modelo/checkpoint-*/
+
+# --- respaldo crudo del scraping: son miles de HTML, no se versionan ---
+datos/raw/
+
+# --- secretos ---
+.env
+*.key
+secrets.toml
+.streamlit/secrets.toml
+
+# --- entorno ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+
+# Lo que SI se versiona y no debe ignorarse:
+#   datos/noticias.csv, datos/etiquetas_llm.csv, datos/auditoria_humana.csv,
+#   datos/particion.csv, datos/figs/, modelo/config.json, modelo/tokenizer*,
+#   modelo/metricas.json
+!modelo/config.json
+!modelo/metricas.json
+!modelo/tokenizer*
+!modelo/vocab*
+!modelo/special_tokens_map.json
