@@ -1,0 +1,22 @@
+{
+  "f1_macro_test": 0.8909970789353678,
+  "accuracy_test": 0.9032258064516129,
+  "f1_macro_test_vs_seccion": 0.8944444444444444,
+  "f1_zero_shot_test": 0.5107008810398641,
+  "f1_zero_shot_muestra40": 0.6823077915376677,
+  "accuracy_zero_shot_muestra40": 0.7,
+  "auditoria_acuerdo": 19,
+  "auditoria_total": 20,
+  "acuerdo_llm_seccion": 0.8771498771498771,
+  "modelo_base": "distilbert-base-multilingual-cased",
+  "modelo_llm": "qwen2.5:7b",
+  "modelo_zero_shot": "Recognai/bert-base-spanish-wwm-cased-xnli",
+  "dispositivo": "cpu",
+  "minutos_entrenamiento": 2.7,
+  "latencia_ms": 47.6,
+  "n_total": 407,
+  "n_train": 284,
+  "n_val": 61,
+  "n_test": 62,
+  "fecha": "2026-10-17"
+}

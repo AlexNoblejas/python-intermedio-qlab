@@ -2,9 +2,6 @@
 
 **Alexander Noblejas** · Python Intermedio, Diplomatura en Ciencia de Datos (QLAB) · Opción **C — Comparada**
 
-> Las líneas marcadas con `COMPLETAR` se llenan con los números de tu corrida.
-> Los dos notebooks los imprimen: el 1 al final de la recolección y el 2 en la celda de métricas.
-
 ---
 
 ## 1. Pregunta del proyecto
@@ -72,19 +69,25 @@ notebook. No se inventó una quinta categoría.
 
 ## 3. Dos hallazgos analíticos
 
-**Hallazgo 1 — `COMPLETAR`**
+**Hallazgo 1 — El fine-tuning le saca +0.38 de F1 al zero-shot (0.89 vs 0.51).**
+Con solo 284 titulares de entrenamiento —etiquetados por el LLM, sin una sola etiqueta hecha
+a mano— DistilBERT multilingüe alcanza **F1 macro 0.89** (accuracy 0.90) en el test reservado,
+frente a **0.51** del zero-shot NLI sobre ese mismo test. Y lo hace en **48 ms por titular**,
+unas 9 veces más rápido que el zero-shot (~450 ms). Destilar el criterio de un LLM pesado a un
+clasificador ligero no solo es viable: rinde mucho más y corre en milisegundos, que es el
+argumento para llevarlo a producción.
 
-> Pistas de dónde suele salir: la brecha entre el F1 del Transformer y el piso zero-shot;
-> qué categoría salió mejor y cuál peor en la matriz de confusión; si `politica` y
-> `economia` se confunden entre sí como es de esperar en noticias peruanas (presupuesto,
-> AFP, minería son a la vez política y economía).
-
-**Hallazgo 2 — `COMPLETAR`**
-
-> Pistas: el acuerdo entre la etiqueta del LLM y la sección del diario (el notebook 2 lo
-> imprime como porcentaje y como tabla cruzada). Dónde discrepan más, y si la opción C
-> deja ver que los dos diarios archivan la misma clase de nota en secciones distintas —
-> que es justamente el análisis de sesgo comparativo que la tarea ofrece como bonus.
+**Hallazgo 2 — El modelo generaliza en vez de solo imitar al LLM; los errores viven en la
+frontera economía/tecnología.** El F1 contra la **sección real del diario** (0.894) es casi
+idéntico al F1 contra las etiquetas del LLM (0.891): el clasificador no se limitó a copiar los
+sesgos del LLM, aprendió una señal que coincide con cómo los propios diarios archivan sus notas.
+Por categoría, `politica` (F1 0.97) y `deportes` (0.97) salen casi perfectas, mientras
+`ciencia_tecnologia` (0.78) y `economia` (0.84) son las más débiles y se confunden entre sí:
+muchas notas de tecnología son también de negocio (despidos de Netflix, productos,
+infraestructura). Es exactamente la frontera que marcó la auditoría humana (caso #15, una feria
+de infraestructura que el LLM mandó a `politica`). El acuerdo LLM–humano de **19/20** y el
+acuerdo LLM–sección de **87.7%** confirman que la supervisión débil es confiable salvo en esos
+casos de frontera.
 
 ---
 
@@ -137,7 +140,7 @@ Los pesos superan los 100 MB y están en `.gitignore`, así que Streamlit Commun
 los verá en el repo. Para desplegar: sube el modelo a Hugging Face Hub (sección 9 del
 notebook 2) y define el secreto `HF_MODEL_ID = "usuario/repositorio"` en Streamlit.
 
-Enlace del dashboard: `COMPLETAR` (o indicar ejecución local comprobada).
+Enlace del dashboard: ejecución local comprobada con `streamlit run app.py` (los pesos del modelo pesan ~540 MB y no se versionan; ver Despliegue para subirlo a HF Hub).
 
 ---
 
@@ -168,8 +171,8 @@ tarea_1/
 
 | | |
 |---|---|
-| F1 macro en test (ref. etiquetas LLM) | `COMPLETAR` |
-| F1 macro en test (ref. sección del diario) | `COMPLETAR` |
-| F1 macro zero-shot | `COMPLETAR` |
-| Acuerdo LLM vs. auditoría humana | `COMPLETAR`/20 |
-| Latencia del clasificador | `COMPLETAR` ms por titular |
+| F1 macro en test (ref. etiquetas LLM) | **0.891** |
+| F1 macro en test (ref. sección del diario) | 0.894 |
+| F1 macro zero-shot (mismo test) | 0.511 |
+| Acuerdo LLM vs. auditoría humana | 19/20 |
+| Latencia del clasificador | 47.6 ms por titular (CPU) |
