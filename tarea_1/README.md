@@ -1,178 +1,147 @@
-# 🗞️ Tarea 1 — Del titular al clasificador
+# Tarea 1 — Del titular al clasificador
 
-**Alexander Noblejas** · Python Intermedio, Diplomatura en Ciencia de Datos (QLAB) · Opción **C — Comparada**
+**Alexander Noblejas (@AlexNoblejas)** · Python Intermedio, QLAB · Opción C — Comparada
 
----
+## 1. Pregunta y metodología
 
-## 1. Pregunta del proyecto
+¿Pueden convertir titulares peruanos en un clasificador de noticias?
 
-**¿Pueden convertir titulares peruanos en un clasificador de noticias?**
-
-El trabajo recolecta noticias reales de dos diarios peruanos, las etiqueta de forma
-semi-supervisada con un LLM que corre en local, audita a mano una muestra de esas
-etiquetas, ajusta un Transformer ligero sobre ellas y despliega un dashboard donde
-cualquiera puede escribir un titular nuevo y ver la categoría predicha con su confianza.
-
+Se recolectaron noticias, se generaron etiquetas con Qwen 2.5 7B mediante Ollama,
+se documentó una auditoría humana de 20 casos y se ajustó DistilBERT multilingüe.
+El dashboard permite explorar el corpus y clasificar titulares nuevos.
 Categorías: `politica`, `economia`, `deportes`, `ciencia_tecnologia`.
 
----
+## 2. Medios, fechas y evidencia de recolección
 
-## 2. Medios y fechas de extracción
+Descarga: **17 de octubre de 2026**. Corpus: **408 noticias**, 349 de El Comercio
+y 59 de La República. Categorías: economía 127, política 106, deportes 100,
+ciencia y tecnología 75. Hay 23 bajadas vacías, conservadas como texto vacío.
+407 noticias están fechadas entre el 8 y el 17 de octubre; una conserva fecha de abril.
 
-| | |
-|---|---|
-| **Opción** | C — Comparada (objetivo 200+200; ver limitación de volumen abajo) |
-| **Medios** | La República (`larepublica.pe`) · El Comercio (`elcomercio.pe`) |
-| **Fecha de descarga** | 17 de octubre de 2026 |
-| **Ventana de publicación cubierta** | 8–17 de octubre de 2026 (~10 días; 1 nota atípica de abril se aísla) |
-| **Volumen final** | 408 noticias (59 La República + 349 El Comercio) |
+**La composición no cumple las 200 noticias por medio de la opción C.** Se documenta
+esta desviación para que el docente pueda evaluarla; no se presume una excepción.
 
-### Cómo se extrajo, y por qué así
+### Por qué se obtuvo 59 noticias de La República
 
-Ambos diarios publican RSS oficiales, pero **cada feed trae solo 15–25 notas**: cuatro
-secciones por medio dan unas 80 filas, muy por debajo de las 350+ que pide la tarea.
-La República además prohíbe `/*/pag/*` en su `robots.txt`, así que paginar las secciones
-no era una opción.
+El `robots.txt` respaldado prohíbe rutas de paginación `/pag/` y `/page/`, y permite
+RSS y sitemaps. Se evitaron esas rutas prohibidas y se consultaron RSS y dos sitemaps
+por cada una de las cuatro secciones: política, economía, deportes y ciencia.
 
-La recolección combina dos fuentes que el `robots.txt` **permite de forma explícita**:
+Los ocho sitemaps guardados contienen **59 URLs únicas de artículos**, todas ya
+presentes en el CSV (25 política, 14 economía, 13 deportes y 7 ciencia). Ninguno
+aporta artículos adicionales. Es una limitación verificada de esos canales en esa
+descarga; no prueba que cualquier otra estrategia permitida fuese imposible.
 
-| Fuente | Qué aporta | Endpoint |
-|---|---|---|
-| RSS | Titular y bajada ya limpios, de las notas recientes | `larepublica.pe/rss/{sección}.xml` · `elcomercio.pe/arc/outboundfeeds/google-news-feed/category/{sección}/?outputType=xml` |
-| Sitemaps de sección | El volumen: cientos de URLs con fecha. El de El Comercio es un *índice* que apunta a sub-sitemaps, que el código sigue en profundidad | `larepublica.pe/sitemap/{sección}.xml` · `elcomercio.pe/sitemap/{sección}/?outputType=xml` |
+La revisión detectó que el lector histórico de los sitemaps normales tomaba
+`image:loc` en lugar del `loc` del artículo. La lectura corregida del respaldo
+recupera las mismas 59 noticias, sin añadir registros. Se conserva el código de la
+corrida original y se aporta un verificador independiente con la corrección.
 
-De cada nota del sitemap se leen los metadatos Open Graph (`og:title`, `og:description`),
-que es donde ambos diarios publican titular y bajada de forma estable.
+Evidencia verificable incluida en [datos/evidencia_recoleccion/](datos/evidencia_recoleccion/):
+robots de ambos medios, los ocho XML respaldados y un resumen CSV con sus hashes.
+`python verificar_evidencia.py` comprueba esta conclusión localmente, sin red ni entrenamiento.
 
-**Buenas prácticas aplicadas:** `User-Agent` descriptivo que identifica el uso académico,
-pausa aleatoria de 1 a 2 segundos entre peticiones, un solo reintento, y caché en disco de
-cada respuesta (`datos/raw/`) para que la corrida sea reanudable y no se vuelva a pedir
-nada que ya se descargó.
-
-### Mapeo de secciones a categorías
-
-| Medio | Sección del diario | Categoría final |
-|---|---|---|
-| La República | `politica` | `politica` |
-| La República | `economia` | `economia` |
-| La República | `deportes` | `deportes` |
-| La República | `ciencia` | `ciencia_tecnologia` |
-| El Comercio | `politica` | `politica` |
-| El Comercio | `economia` | `economia` |
-| El Comercio | `deporte-total` | `deportes` |
-| El Comercio | `tecnologia` | `ciencia_tecnologia` |
-
-Las notas cuya sección no cae en ninguna de las cuatro se **descartan y se reportan** en el
-notebook. No se inventó una quinta categoría.
-
----
+Se utilizó un User-Agent académico, pausas de 1–2 segundos, máximo un reintento
+y caché en `datos/raw/`. El respaldo completo permanece local; se versiona aquí
+solo la evidencia pequeña necesaria. El notebook muestra el mapeo de secciones,
+la limpieza y seis descartes por categorías no admitidas.
 
 ## 3. Dos hallazgos analíticos
 
-**Hallazgo 1 — El fine-tuning le saca +0.38 de F1 al zero-shot (0.89 vs 0.51).**
-Con solo 284 titulares de entrenamiento —etiquetados por el LLM, sin una sola etiqueta hecha
-a mano— DistilBERT multilingüe alcanza **F1 macro 0.89** (accuracy 0.90) en el test reservado,
-frente a **0.51** del zero-shot NLI sobre ese mismo test. Y lo hace en **48 ms por titular**,
-unas 9 veces más rápido que el zero-shot (~450 ms). Destilar el criterio de un LLM pesado a un
-clasificador ligero no solo es viable: rinde mucho más y corre en milisegundos, que es el
-argumento para llevarlo a producción.
+**1. El clasificador supera al baseline en este test y bajo la misma referencia.**
+Con titular + bajada y referencia LLM, DistilBERT obtiene F1 macro 0.891 y accuracy
+0.903, frente a F1 0.511 del zero-shot sobre las mismas 62 noticias. La latencia
+registrada fue 47.6 ms por noticia en CPU, frente a unos 449 ms del zero-shot.
+Estas cifras dependen del equipo, la entrada y el corpus utilizados.
 
-**Hallazgo 2 — El modelo generaliza en vez de solo imitar al LLM; los errores viven en la
-frontera economía/tecnología.** El F1 contra la **sección real del diario** (0.894) es casi
-idéntico al F1 contra las etiquetas del LLM (0.891): el clasificador no se limitó a copiar los
-sesgos del LLM, aprendió una señal que coincide con cómo los propios diarios archivan sus notas.
-Por categoría, `politica` (F1 0.97) y `deportes` (0.97) salen casi perfectas, mientras
-`ciencia_tecnologia` (0.78) y `economia` (0.84) son las más débiles y se confunden entre sí:
-muchas notas de tecnología son también de negocio (despidos de Netflix, productos,
-infraestructura). Es exactamente la frontera que marcó la auditoría humana (caso #15, una feria
-de infraestructura que el LLM mandó a `politica`). El acuerdo LLM–humano de **19/20** y el
-acuerdo LLM–sección de **87.7%** confirman que la supervisión débil es confiable salvo en esos
-casos de frontera.
+**2. Economía y tecnología presentan las fronteras menos claras.** Política
+(F1 0.973) y deportes (0.970) superan a economía (0.839) y ciencia/tecnología
+(0.783). La matriz muestra confusiones especialmente entre las dos últimas.
+El F1 contra la sección del diario es 0.894; esto ofrece una comprobación adicional,
+pero no demuestra generalización fuera de esta muestra.
 
----
+![Cobertura por categoría y medio](datos/figs/cobertura_categorias.png)
+![Ventana temporal](datos/figs/ventana_temporal.png)
+![Longitud de titulares](datos/figs/longitud_titulares.png)
 
-## 4. Dos limitaciones técnicas
+Las vistas PNG facilitan la lectura; se conservan también los tres gráficos Plotly
+interactivos y sus títulos analíticos en el notebook original.
 
-**Limitación 1 — Las etiquetas de entrenamiento no son verdad de oro.**
-El modelo se entrenó sobre etiquetas generadas por un LLM, así que hereda sus sesgos y sus
-errores sistemáticos. El F1 reportado mide **concordancia con el LLM**, no corrección
-absoluta. Por eso el notebook 2 reporta además el F1 contra la sección del diario, que
-nunca participó del entrenamiento: la brecha entre ambas cifras es la medida honesta de
-cuánto queda por fuera.
+## 4. Limitaciones y alcance de los resultados
 
-**Limitación 2 — La ventana temporal es corta y el test es pequeño.**
-El corpus retrata una coyuntura de pocos días, no un periodo largo: si esos días estuvieron
-dominados por un tema (una crisis política, un torneo), el clasificador aprende esa
-coyuntura y no el lenguaje estable de cada sección. Y con ~15% del dataset como test, cada
-error individual mueve el F1 varios puntos, así que las métricas tienen varianza alta.
+**1. Cobertura limitada y desbalance entre medios.** La ventana es corta, predomina
+El Comercio y no se cumple el volumen por medio de la opción C. Un test pequeño
+de 62 noticias no establece rendimiento en otras fechas, medios o temas.
 
----
+**2. Supervisión débil y protocolo de evaluación.** Las etiquetas LLM no son una
+verdad de oro. El acuerdo humano documentado es 19/20; una de las 408 filas LLM
+carece de etiqueta válida y se excluye, dejando 407 filas: 284 train, 61 val, 62 test.
+La partición es estratificada con semilla 42. Cuatro noticias del test habían
+aparecido en el baseline inicial y dos en la auditoría previa al split: no debe
+afirmarse aislamiento absoluto. No se identificó uso del test para elegir el checkpoint.
 
-## 5. Cómo ejecutar en local
+**Entrada de la demo.** El entrenamiento y el F1 principal usan titular + bajada.
+Con los mismos pesos y test, usando solo titulares, se verificó F1 **0.847** y
+accuracy **0.855**. La app recibe solo titulares y explica esta diferencia.
+La probabilidad mostrada no ha sido calibrada como garantía de acierto.
 
-```bash
-# 1. Entorno
+**Herramienta de entrenamiento.** Se usó un bucle de PyTorch, tres épocas, batch 16
+y selección por F1 macro de validación. Funciona, pero se aparta de la solicitud de
+usar HuggingFace Trainer. No se ha reentrenado para cambiar esa implementación.
+
+## 5. Ejecución local
+
+Los comandos se ejecutan **dentro de `tarea_1/`**, con Python 3.11.
+
+```powershell
 python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m streamlit run app.py
+```
 
-# 2. Etiquetado con LLM local — Ollama tiene que estar corriendo
-ollama serve                       # en otra terminal
+En macOS/Linux, activar con `source .venv/bin/activate`.
+
+**Para quien ya tiene los pesos locales:** no es necesario volver a ejecutar los
+notebooks para abrir la app. Deben estar `modelo/config.json`, el tokenizer y
+`modelo/model.safetensors` (541,323,528 bytes). Los pesos se excluyen de Git por tamaño.
+
+**Para un clon nuevo:** los pesos no se descargan con GitHub. Hay que obtenerlos
+por una vía de distribución facilitada por el autor, o ejecutar los notebooks para
+generarlos. No se ofrece todavía un identificador público de Hugging Face.
+La app permite usar `HF_MODEL_ID` cuando exista ese repositorio de modelo.
+
+Para reproducir el proceso completo (opcional para abrir la app con pesos locales):
+
+```powershell
 ollama pull qwen2.5:7b
-
-# 3. Notebooks, en orden
-jupyter lab
-#   -> 01_recoleccion.ipynb     (scraping, limpieza, EDA  -> datos/noticias.csv)
-#   -> 02_clasificacion.ipynb   (zero-shot, LLM, fine-tuning -> modelo/)
-
-# 4. Dashboard
-streamlit run app.py               # abre http://localhost:8501
+# Mantener Ollama en ejecución; ollama serve si no está iniciado.
+python -m jupyterlab
+# Abrir 01_recoleccion.ipynb y después 02_clasificacion.ipynb.
 ```
 
-**Nota sobre la GPU.** El notebook 2 detecta automáticamente CUDA (NVIDIA), MPS (Mac con
-Apple Silicon) o CPU, y entrena sobre lo que encuentre. La celda de detección imprime qué
-dispositivo está usando — vale la pena mirarla antes de entrenar, porque la diferencia
-entre GPU y CPU es de minutos contra media hora.
+Cambiar las noticias requiere regenerar etiquetas, particiones y entrenamiento;
+no reutilizar automáticamente pesos de un corpus anterior. Las versiones fijadas
+corresponden al entorno existente; no se certifica aquí una instalación desde cero.
 
-### Despliegue (opcional)
+## Resultados y decisión
 
-Los pesos superan los 100 MB y están en `.gitignore`, así que Streamlit Community Cloud no
-los verá en el repo. Para desplegar: sube el modelo a Hugging Face Hub (sección 9 del
-notebook 2) y define el secreto `HF_MODEL_ID = "usuario/repositorio"` en Streamlit.
+| Evaluación | Accuracy | F1 macro |
+|---|---:|---:|
+| Zero-shot, 40 casos iniciales, referencia sección | 0.700 | 0.682 |
+| Zero-shot, test de 62, referencia LLM | — | 0.511 |
+| DistilBERT, test de 62, titular + bajada, referencia LLM | 0.903 | 0.891 |
+| DistilBERT, mismo test e entrada, referencia sección | 0.903 | 0.894 |
+| DistilBERT, mismo test, solo titular, referencia LLM | 0.855 | 0.847 |
 
-Enlace del dashboard: ejecución local comprobada con `streamlit run app.py` (los pesos del modelo pesan ~540 MB y no se versionan; ver Despliegue para subirlo a HF Hub).
+Acuerdo LLM–humano: **19/20 (95%)**. Se conserva el CSV de auditoría original.
+El LLM alcanza F1 0.936 frente a la sección del diario en el test; su F1 contra sus
+propias etiquetas es 1 por construcción y no mide calidad independiente.
 
----
+Se elige DistilBERT para la demo por su equilibrio de rendimiento y latencia.
+Antes de producción harían falta más fechas y medios, un test humano independiente
+y evaluación de calibración. El despliegue en nube es opcional y no se ha realizado.
 
-## Estructura
-
-```
-tarea_1/
-├── 01_recoleccion.ipynb      Scraping (RSS + sitemaps), limpieza y EDA
-├── 02_clasificacion.ipynb    Zero-shot, etiquetado LLM, auditoría, fine-tuning, evaluación
-├── app.py                    Dashboard Streamlit con probador en vivo
-├── requirements.txt
-├── README.md
-├── .gitignore
-├── datos/
-│   ├── noticias.csv              dataset final, 7 columnas
-│   ├── etiquetas_llm.csv         etiquetas del LLM con su confianza
-│   ├── auditoria_humana.csv      los 20 casos revisados a mano
-│   ├── particion.csv             qué fila cayó en train / val / test
-│   ├── figs/                     matriz de confusión
-│   └── raw/                      respaldo crudo (ignorado por git)
-└── modelo/
-    ├── config.json, tokenizer*   artefactos ligeros, sí se versionan
-    ├── metricas.json             lo que lee el dashboard
-    └── *.safetensors             pesos (ignorados por git)
-```
-
-## Resultados
-
-| | |
-|---|---|
-| F1 macro en test (ref. etiquetas LLM) | **0.891** |
-| F1 macro en test (ref. sección del diario) | 0.894 |
-| F1 macro zero-shot (mismo test) | 0.511 |
-| Acuerdo LLM vs. auditoría humana | 19/20 |
-| Latencia del clasificador | 47.6 ms por titular (CPU) |
+Los resultados históricos y pesos se conservan. La revisión del 18 de octubre
+añade evidencia, documentación, vistas estáticas y la evaluación ya comprobada de
+solo titulares; no cambia las noticias, la auditoría, las particiones ni el modelo.

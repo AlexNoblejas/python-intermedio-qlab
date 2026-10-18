@@ -1,0 +1,23 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"><url>
+                  <loc>https://larepublica.pe/ciencia/2026/10/16/la-antartida-se-encuentra-cubierta-de-hielo-de-hasta-4-km-de-espesor-pero-no-se-compara-en-nada-con-lo-que-orbita-cerca-de-jupiter-667888</loc>
+                  <lastmod>2026-10-16T22:48:22-05:00</lastmod>
+                </url><url>
+                  <loc>https://larepublica.pe/ciencia/2026/10/16/cientificos-descubren-una-nueva-especie-de-flor-albiceleste-en-los-andes-peruanos-y-la-nombraron-en-honor-a-lionel-messi-1575520</loc>
+                  <lastmod>2026-10-16T18:38:03-05:00</lastmod>
+                </url><url>
+                  <loc>https://larepublica.pe/ciencia/2026/10/16/un-lagarto-de-la-epoca-de-los-dinosaurios-perdio-su-cola-hace-99-millones-de-anos-y-el-ambar-conservo-la-evidencia-1288416</loc>
+                  <lastmod>2026-10-16T17:30:35-05:00</lastmod>
+                </url><url>
+                  <loc>https://larepublica.pe/ciencia/2026/10/16/un-estudio-cientifico-advierte-sobre-las-bolsas-de-te-algunas-liberan-miles-de-millones-de-particulas-de-plastico-durante-la-preparacion-996375</loc>
+                  <lastmod>2026-10-16T16:54:16-05:00</lastmod>
+                </url><url>
+                  <loc>https://larepublica.pe/ciencia/2026/10/16/el-sistema-solar-se-desintegraria-mucho-antes-de-lo-previsto-despues-de-todo-newton-se-equivoco-1090320</loc>
+                  <lastmod>2026-10-16T15:57:31-05:00</lastmod>
+                </url><url>
+                  <loc>https://larepublica.pe/ciencia/2026/10/16/un-trineo-de-nieve-disenado-en-espana-y-propulsado-por-20-cometas-cruzara-la-antartida-en-un-viaje-de-80-dias-con-carga-cientifica-273648</loc>
+                  <lastmod>2026-10-16T14:53:30-05:00</lastmod>
+                </url><url>
+                  <loc>https://larepublica.pe/ciencia/2026/10/15/descubren-en-alaska-mas-de-80000-piezas-arqueologicas-en-un-campamento-de-cazadores-de-mamuts-que-habitaron-la-region-hace-13800-anos-237585</loc>
+                  <lastmod>2026-10-15T15:49:05-05:00</lastmod>
+                </url></urlset>

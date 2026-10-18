@@ -18,5 +18,10 @@
   "n_train": 284,
   "n_val": 61,
   "n_test": 62,
-  "fecha": "2026-10-17"
+  "fecha": "2026-10-17",
+  "entrada_evaluacion_principal": "titular + bajada",
+  "f1_macro_test_solo_titular": 0.8465073529411765,
+  "accuracy_test_solo_titular": 0.8548387096774194,
+  "fecha_verificacion_solo_titular": "2026-10-18",
+  "nota_verificacion": "Mismos pesos y mismas 62 filas de test; sin reentrenamiento."
 }

@@ -106,10 +106,10 @@ c1.metric("Noticias recolectadas", f"{len(df)}",
           delta=f"{len(vista)} con los filtros actuales" if len(vista) != len(df) else None)
 
 if "f1_macro_test" in met:
-    c2.metric("F1 macro en test", f"{met['f1_macro_test']:.3f}",
+    c2.metric("F1 macro en test (titular + bajada)", f"{met['f1_macro_test']:.3f}",
               delta=f"{met['f1_macro_test'] - met.get('f1_zero_shot_test', 0):+.3f} vs. zero-shot")
 else:
-    c2.metric("F1 macro en test", "N/D", help="Ejecuta 02_clasificacion.ipynb")
+    c2.metric("F1 macro en test (titular + bajada)", "N/D", help="Ejecuta 02_clasificacion.ipynb")
 
 if met.get("auditoria_acuerdo") is not None:
     ok, tot = met["auditoria_acuerdo"], met.get("auditoria_total", 20)
@@ -158,6 +158,14 @@ st.divider()
 # ──────────────────────────── probador en vivo ────────────────────────────
 st.subheader("🔎 Probador en vivo")
 st.caption("Escribe o pega un titular y el clasificador entrenado predice su categoría.")
+if "f1_macro_test_solo_titular" in met:
+    st.caption(
+        f"Evaluación con solo titulares, como este probador: F1 macro "
+        f"{met['f1_macro_test_solo_titular']:.3f} en las mismas 62 noticias de test. "
+        "El indicador superior corresponde a titular + bajada. La confianza es "
+        "la probabilidad asignada por el modelo; no está calibrada como garantía de acierto."
+    )
+
 
 EJEMPLOS = {
     "— escribe el tuyo —": "",
