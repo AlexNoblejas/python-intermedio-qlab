@@ -1,0 +1,28 @@
+# Corpus crudo y audio convertido: pesados, no se versionan.
+# Se recuperan con `python corpus_audio.py` y con datos/fuentes.csv.
+datos/raw/
+datos/audio_16k/
+
+# Pesos y artefactos de modelos
+modelos/*.safetensors
+modelos/*.bin
+modelos/*.pt
+modelos/checkpoint-*/
+modelos/paddle*/
+
+# Entornos
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Secretos
+.env
+*.key
+.streamlit/secrets.toml
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

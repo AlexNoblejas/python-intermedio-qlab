@@ -1,0 +1,37 @@
+# Entorno de los notebooks (OCR, ASR, métricas y LLM). NO se instala en el despliegue.
+# Equivale a `uv sync --group docai` + `uv sync --group audio` de las sesiones 10 y 13.
+#
+#   python -m venv .venv && .venv\Scripts\activate     (Windows)
+#   pip install -r requirements-pipeline.txt
+#
+# numpy y pyarrow van pinneados juntos a propósito: en la Tarea 1 un pyarrow nuevo
+# arrastró numpy 2.0 y rompió streamlit y el entrenamiento.
+numpy==1.26.4
+pyarrow==17.0.0
+pandas==2.2.3
+
+# OCR (sesión 10)
+paddleocr[doc-parser]>=3.7
+pdf2image>=1.17
+pymupdf>=1.24
+pillow>=10.4
+opencv-python-headless>=4.10
+pytesseract>=0.3.13
+
+# ASR (sesión 13)
+faster-whisper>=1.2.1
+librosa>=0.11
+soundfile>=0.13
+jiwer>=4.0
+rapidfuzz>=3.9
+scipy>=1.14
+
+# Diarización y modelos alternativos
+transformers>=4.56
+torch>=2.4
+accelerate>=1.10
+
+# Gráficos y notebooks
+plotly==5.24.1
+jupyterlab>=4.2
+nbformat>=5.10

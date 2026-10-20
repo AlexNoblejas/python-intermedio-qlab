@@ -8,7 +8,8 @@ Repositorio de tareas del módulo de Python intermedio.
 
 | Tarea | Tema | Estado |
 |---|---|---|
-| [`tarea_1/`](tarea_1/) | Noticias peruanas: del titular al clasificador | En curso |
+| [`tarea_1/`](tarea_1/) | Noticias peruanas: del titular al clasificador | Entregada |
+| [`tarea_2/`](tarea_2/) | Voces y documentos peruanos: del archivo escaneado al texto buscable | En curso |
 
 Cada carpeta de tarea trae su propio `README.md` con la metodología, los
 resultados y las instrucciones de ejecución.
