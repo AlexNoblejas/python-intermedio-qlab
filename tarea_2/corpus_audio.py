@@ -25,7 +25,8 @@ CRUDO = AQUI / "datos" / "raw" / "audio"
 LISTO = AQUI / "datos" / "audio_16k"
 FUENTES = AQUI / "datos" / "fuentes.csv"
 
-PAUSA = 1.5
+PAUSA = 1.5          # segundos de espera entre peticiones a Wikimedia
+SR = 16_000          # mono 16 kHz: lo que esperan todos los modelos de voz de la sesión 13
 UA = {"User-Agent": "tarea2-qlab-pucp/1.0 (alexander.noblejas@pucp.edu.pe) python-urllib"}
 FILEPATH = "https://commons.wikimedia.org/wiki/Special:FilePath/"
 DESCRIPCION = "https://commons.wikimedia.org/wiki/File:"
@@ -174,44 +175,93 @@ def escribir_fuentes(filas: list[dict]) -> Path:
     return FUENTES
 
 
-def segmentar(filas: list[dict], max_seg: float = 100.0, objetivo: float = 90.0,
-              minimo: float = 20.0) -> list[dict]:
-    """Corta los clips largos en piezas de ~90 s, siempre en una pausa real del habla.
+def filas_en_disco() -> list[dict]:
+    """Reconstruye el inventario a partir de los wav ya convertidos, sin volver a decodificar."""
+    import wave
+    filas = []
+    for cid, nombre, grupo, autor, hablantes, _dur, nota in CORPUS:
+        ruta = LISTO / f"{cid}.wav"
+        if not ruta.exists():
+            continue
+        with wave.open(str(ruta)) as w:
+            segundos = w.getnframes() / w.getframerate()
+        filas.append({"id": cid, "archivo_audio": str(ruta.relative_to(AQUI)).replace("\\", "/"),
+                      "duracion_seg": round(segundos, 2), "grupo": grupo,
+                      "hablantes_declarados": hablantes, "nota": nota, "autor": autor})
+    return filas
 
-    El corpus pide "al menos 20 clips" y tiene dos audios largos (la conferencia de 4,2 min y
-    el testimonio de 8,8 min). Partirlos sirve a dos cosas: sube el número de clips y, sobre
-    todo, permite que la muestra de evaluación incluya esas fuentes sin obligar a transcribir
-    nueve minutos a mano.
 
-    Los cortes caen en los límites que marca el VAD, no a tiempo fijo, para no partir palabras.
-    Devuelve la lista de clips (la unidad de `datos/transcripciones.csv`), donde cada uno
-    recuerda de qué archivo fuente salió y en qué segundo empieza.
+def pausas(audio, min_pausa: float = 0.4, marco: float = 0.02) -> list[float]:
+    """Centros de las pausas del habla, en segundos.
+
+    Solo numpy: mide la energía (RMS) en marcos de 20 ms y busca rachas de baja energía de al
+    menos `min_pausa`. El umbral es relativo al propio audio, así que funciona igual en un
+    testimonio grabado en interior y en una entrevista de calle con tráfico de fondo.
+
+    Se hace así, y no con el VAD de faster-whisper, porque ese VAD corre sobre onnxruntime y
+    en esta máquina tumbaba el intérprete sin dejar traceback.
     """
-    import soundfile as sf
-    from voz import SR, cargar_audio, tramos_de_voz
+    import numpy as np
+
+    n = int(marco * SR)
+    if len(audio) < n * 10:
+        return []
+    marcos = audio[: len(audio) // n * n].reshape(-1, n).astype(np.float64)
+    rms = np.sqrt((marcos ** 2).mean(axis=1))
+    umbral = max(np.percentile(rms, 20) * 2.5, rms.max() * 0.02)
+    silencio = rms < umbral
+    minimo_marcos = max(1, int(min_pausa / marco))
+
+    centros, i = [], 0
+    while i < len(silencio):
+        if not silencio[i]:
+            i += 1
+            continue
+        j = i
+        while j < len(silencio) and silencio[j]:
+            j += 1
+        if j - i >= minimo_marcos:
+            centros.append((i + j) / 2 * marco)
+        i = j
+    return centros
+
+
+# El clip multihablante no se parte: partirlo repartiría las voces entre bloques y dejaría a la
+# diarización sin el caso que el enunciado pide.
+NO_PARTIR = {"clip_06"}
+
+
+def segmentar(filas: list[dict], max_seg: float = 200.0, objetivo: float = 90.0,
+              minimo: float = 20.0) -> list[dict]:
+    """Parte los audios largos en bloques de ~90 s, siempre en una pausa del habla.
+
+    Solo se parten los dos audios genuinamente largos del corpus: la conferencia de 4,2 min y
+    el testimonio de Junín de 8,8 min. Eso sube el número de clips y, sobre todo, permite que
+    la muestra de evaluación incluya esas dos fuentes sin obligar a transcribir nueve minutos
+    seguidos a mano.
+
+    Devuelve la lista de clips (la unidad de `datos/transcripciones.csv`); cada uno recuerda de
+    qué archivo salió y en qué segundo empieza.
+    """
+    import numpy as np
+    from scipy.io import wavfile
 
     clips = []
     for f in filas:
-        if f["duracion_seg"] <= max_seg:
+        if f["duracion_seg"] <= max_seg or f["id"] in NO_PARTIR:
             clips.append({**f, "clip_id": f["id"], "fuente_id": f["id"], "inicio_seg": 0.0})
             continue
 
-        audio = cargar_audio(AQUI / f["archivo_audio"])
-        try:
-            tramos = tramos_de_voz(audio)
-        except Exception as e:                      # sin VAD disponible: cortes a tiempo fijo
-            print(f"  {f['id']}: VAD no disponible ({e}); corto a tiempo fijo")
-            tramos = [(x, min(x + objetivo, len(audio) / SR))
-                      for x in range(0, int(len(audio) / SR), int(objetivo))]
+        sr, x = wavfile.read(AQUI / f["archivo_audio"])
+        x = x.astype(np.float32) / 32768.0 if x.dtype.kind == "i" else x.astype(np.float32)
+        dur = len(x) / sr
 
-        # agrupar tramos de voz en bloques de al menos `objetivo` segundos
         cortes, ini = [], 0.0
-        for _a, b in tramos:
-            if b - ini >= objetivo:
-                cortes.append((ini, b))
-                ini = b
-        cortes.append((ini, len(audio) / SR))
-        # una cola muy corta se pega al bloque anterior en vez de quedar sola
+        for pausa in pausas(x):
+            if pausa - ini >= objetivo:
+                cortes.append((ini, pausa))
+                ini = pausa
+        cortes.append((ini, dur))
         if len(cortes) > 1 and cortes[-1][1] - cortes[-1][0] < minimo:
             (a0, _), (_, b1) = cortes[-2], cortes[-1]
             cortes[-2:] = [(a0, b1)]
@@ -219,7 +269,7 @@ def segmentar(filas: list[dict], max_seg: float = 100.0, objetivo: float = 90.0,
         for i, (a, b) in enumerate(cortes):
             cid = f"{f['id']}_{chr(ord('a') + i)}"
             salida = LISTO / f"{cid}.wav"
-            sf.write(salida, audio[int(a * SR):int(b * SR)], SR)
+            wavfile.write(salida, SR, (x[int(a * sr):int(b * sr)] * 32767).astype(np.int16))
             clips.append({**f, "clip_id": cid, "fuente_id": f["id"], "inicio_seg": round(a, 2),
                           "archivo_audio": str(salida.relative_to(AQUI)).replace("\\", "/"),
                           "duracion_seg": round(b - a, 2)})
@@ -253,9 +303,20 @@ def listar() -> None:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--listar", action="store_true", help="solo mostrar el inventario")
+    ap.add_argument("--segmentar", action="store_true",
+                    help="saltarse la descarga: segmentar los wav que ya están en disco")
     args = ap.parse_args()
     if args.listar:
         listar()
+    elif args.segmentar:
+        filas = filas_en_disco()
+        print(f"{len(filas)} wav en disco · {sum(f['duracion_seg'] for f in filas) / 60:.1f} min")
+        escribir_fuentes(filas)
+        print("\nSegmentando los audios largos…")
+        clips = segmentar(filas)
+        destino = escribir_clips(clips)
+        total = sum(c["duracion_seg"] for c in clips)
+        print(f"\n{len(clips)} clips · {total / 60:.1f} min · inventario en {destino}")
     else:
         listar()
         print("\nDescargando…")
