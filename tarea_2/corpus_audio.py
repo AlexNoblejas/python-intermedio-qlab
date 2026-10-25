@@ -174,6 +174,71 @@ def escribir_fuentes(filas: list[dict]) -> Path:
     return FUENTES
 
 
+def segmentar(filas: list[dict], max_seg: float = 100.0, objetivo: float = 90.0,
+              minimo: float = 20.0) -> list[dict]:
+    """Corta los clips largos en piezas de ~90 s, siempre en una pausa real del habla.
+
+    El corpus pide "al menos 20 clips" y tiene dos audios largos (la conferencia de 4,2 min y
+    el testimonio de 8,8 min). Partirlos sirve a dos cosas: sube el número de clips y, sobre
+    todo, permite que la muestra de evaluación incluya esas fuentes sin obligar a transcribir
+    nueve minutos a mano.
+
+    Los cortes caen en los límites que marca el VAD, no a tiempo fijo, para no partir palabras.
+    Devuelve la lista de clips (la unidad de `datos/transcripciones.csv`), donde cada uno
+    recuerda de qué archivo fuente salió y en qué segundo empieza.
+    """
+    import soundfile as sf
+    from voz import SR, cargar_audio, tramos_de_voz
+
+    clips = []
+    for f in filas:
+        if f["duracion_seg"] <= max_seg:
+            clips.append({**f, "clip_id": f["id"], "fuente_id": f["id"], "inicio_seg": 0.0})
+            continue
+
+        audio = cargar_audio(AQUI / f["archivo_audio"])
+        try:
+            tramos = tramos_de_voz(audio)
+        except Exception as e:                      # sin VAD disponible: cortes a tiempo fijo
+            print(f"  {f['id']}: VAD no disponible ({e}); corto a tiempo fijo")
+            tramos = [(x, min(x + objetivo, len(audio) / SR))
+                      for x in range(0, int(len(audio) / SR), int(objetivo))]
+
+        # agrupar tramos de voz en bloques de al menos `objetivo` segundos
+        cortes, ini = [], 0.0
+        for _a, b in tramos:
+            if b - ini >= objetivo:
+                cortes.append((ini, b))
+                ini = b
+        cortes.append((ini, len(audio) / SR))
+        # una cola muy corta se pega al bloque anterior en vez de quedar sola
+        if len(cortes) > 1 and cortes[-1][1] - cortes[-1][0] < minimo:
+            (a0, _), (_, b1) = cortes[-2], cortes[-1]
+            cortes[-2:] = [(a0, b1)]
+
+        for i, (a, b) in enumerate(cortes):
+            cid = f"{f['id']}_{chr(ord('a') + i)}"
+            salida = LISTO / f"{cid}.wav"
+            sf.write(salida, audio[int(a * SR):int(b * SR)], SR)
+            clips.append({**f, "clip_id": cid, "fuente_id": f["id"], "inicio_seg": round(a, 2),
+                          "archivo_audio": str(salida.relative_to(AQUI)).replace("\\", "/"),
+                          "duracion_seg": round(b - a, 2)})
+            print(f"  {cid}  {b - a:6.1f} s  (de {f['id']}, desde {a:.0f} s)")
+    return clips
+
+
+def escribir_clips(clips: list[dict]) -> Path:
+    """datos/clips.csv: el inventario de clips que consume 01_extraccion.ipynb."""
+    columnas = ["clip_id", "fuente_id", "archivo_audio", "duracion_seg", "inicio_seg",
+                "grupo", "hablantes_declarados", "autor", "nota"]
+    destino = AQUI / "datos" / "clips.csv"
+    with destino.open("w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=columnas, extrasaction="ignore")
+        w.writeheader()
+        w.writerows(clips)
+    return destino
+
+
 def listar() -> None:
     total = sum(c[5] for c in CORPUS)
     print(f"{len(CORPUS)} clips · {total / 60:.1f} min de español peruano · todo {LICENCIA}")
@@ -199,5 +264,10 @@ if __name__ == "__main__":
         filas = convertir()
         ruta = escribir_fuentes(filas)
         real = sum(f["duracion_seg"] for f in filas)
-        print(f"\n{len(filas)} clips · {real / 60:.1f} min medidos sobre el audio decodificado")
+        print(f"\n{len(filas)} archivos · {real / 60:.1f} min medidos sobre el audio decodificado")
         print(f"fuentes escritas en {ruta}")
+        print("\nSegmentando los audios largos…")
+        clips = segmentar(filas)
+        destino = escribir_clips(clips)
+        total = sum(c["duracion_seg"] for c in clips)
+        print(f"\n{len(clips)} clips · {total / 60:.1f} min · inventario en {destino}")
