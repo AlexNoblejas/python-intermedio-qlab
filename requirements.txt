@@ -1,0 +1,12 @@
+# Dependencias SOLO del dashboard (lo que instala Streamlit Community Cloud).
+# La app únicamente lee CSV: no carga PaddleOCR, Whisper ni LLM.
+# El entorno pesado de los notebooks está en requirements-pipeline.txt.
+#
+# Sin versiones exactas a propósito: los pines de numpy y pyarrow que necesita el entorno
+# local (Python 3.11) no tienen wheels para el Python que usa Streamlit Cloud, y eso hacía
+# fallar el despliegue.
+streamlit>=1.40
+pandas>=2.2
+numpy>=1.26
+plotly>=5.24
+openpyxl>=3.1
