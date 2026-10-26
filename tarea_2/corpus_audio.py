@@ -226,6 +226,117 @@ def pausas(audio, min_pausa: float = 0.4, marco: float = 0.02) -> list[float]:
     return centros
 
 
+
+def regiones_de_voz(audio, marco: float = 0.02, max_tramo: float = 25.0,
+                    min_pausa: float = 0.5) -> list[tuple[float, float]]:
+    """Trozos de audio para mandar al modelo, en segundos: el VAD de repuesto, con numpy.
+
+    Existe porque el VAD de faster-whisper corre sobre onnxruntime y en esta máquina tumba el
+    intérprete sin dejar traceback.
+
+    Criterio deliberadamente conservador: **cubre todo el audio**, cortando en las pausas en
+    trozos de hasta `max_tramo`, y descarta un trozo solo si está prácticamente en silencio
+    absoluto. Un VAD agresivo con umbral relativo parecía mejor, pero medido sobre el `clip_06`
+    —una entrevista de calle con tráfico de fondo— se comía el 60 % del audio: en una grabación
+    ruidosa el piso de ruido sube y arrastra el umbral por encima de la voz. Perder habla
+    arruina el WER mucho más que mandarle al modelo un par de segundos de silencio.
+    """
+    import numpy as np
+
+    n = int(marco * SR)
+    dur = len(audio) / SR
+    if len(audio) < n * 10:
+        return [(0.0, dur)]
+
+    marcos = audio[: len(audio) // n * n].reshape(-1, n).astype(np.float64)
+    rms = np.sqrt((marcos ** 2).mean(axis=1))
+    pico = rms.max() or 1.0
+
+    # cortar en pausas, sin dejar huecos: cada trozo empieza donde terminó el anterior
+    candidatos = pausas(audio, min_pausa=min_pausa, marco=marco)
+    tramos, ini = [], 0.0
+    for corte in candidatos:
+        if corte - ini >= max_tramo * 0.6:
+            tramos.append((ini, corte))
+            ini = corte
+    tramos.append((ini, dur))
+
+    # si una pausa quedó lejos, partir a lo bruto para no pasar de max_tramo
+    salida = []
+    for a, b in tramos:
+        while b - a > max_tramo:
+            salida.append((a, a + max_tramo))
+            a += max_tramo
+        if b - a > 0.05:
+            salida.append((a, b))
+
+    # descartar solo lo que es silencio de verdad (nada que se parezca a voz en todo el trozo)
+    utiles = []
+    for a, b in salida:
+        i, j = int(a / marco), max(int(a / marco) + 1, int(b / marco))
+        if rms[i:j].max(initial=0.0) >= pico * 0.01:
+            utiles.append((a, b))
+    return utiles or [(0.0, dur)]
+
+
+def diarizar_simple(audio, tramos: list[tuple[float, float]], n_hablantes: int | None = None,
+                    umbral: float = 0.9, min_dur: float = 1.0) -> list[int]:
+    """Agrupa los tramos por hablante. Devuelve una etiqueta entera por tramo.
+
+    Huella de voz = media y desviación de 20 coeficientes MFCC sobre el tramo, estandarizadas
+    entre tramos; después agrupamiento jerárquico con distancia coseno. Es la diarización que
+    se puede hacer con lo que ya está instalado (librosa y scikit-learn, que entra con librosa).
+
+    No se usa `voz.diarizar` porque sus huellas vienen de WeSpeaker vía `pyannote.audio`, que no
+    está en las dependencias de esta tarea y cuyo modelo está restringido en Hugging Face
+    (pide token y aceptar términos). Un MFCC distingue voces peor que un modelo entrenado para
+    eso, y así queda dicho en el notebook: sirve para separar turnos en una entrevista, no para
+    afirmar identidades.
+
+    Los tramos de menos de `min_dur` no votan en el agrupamiento —"sí", "ajá" dan huellas poco
+    fiables— y después se asignan al grupo más parecido.
+
+    Conviene pasar `n_hablantes` cuando la fuente lo dice: medido sobre el `clip_06`, con el
+    número declarado (3) el reparto queda en 15/11/5 tramos y alterna como una entrevista real,
+    mientras que dejándolo libre el umbral sobre MFCC sobre-segmenta.
+    """
+    import librosa
+    import numpy as np
+    from sklearn.cluster import AgglomerativeClustering
+
+    if not tramos:
+        return []
+
+    huellas = []
+    for a, b in tramos:
+        x = audio[int(a * SR):int(b * SR)]
+        if len(x) < SR // 4:
+            x = np.pad(x, (0, SR // 4 - len(x)))
+        m = librosa.feature.mfcc(y=x.astype(np.float32), sr=SR, n_mfcc=20)
+        huellas.append(np.concatenate([m.mean(axis=1), m.std(axis=1)]))
+    H = np.vstack(huellas)
+    H = (H - H.mean(axis=0)) / (H.std(axis=0) + 1e-9)
+    H = H / (np.linalg.norm(H, axis=1, keepdims=True) + 1e-9)
+
+    largos = np.array([b - a >= min_dur for a, b in tramos])
+    if largos.sum() < 2:
+        largos = np.ones(len(tramos), dtype=bool)
+    if n_hablantes == 1 or largos.sum() < 2:
+        return [0] * len(tramos)
+
+    grupo = AgglomerativeClustering(
+        n_clusters=n_hablantes,
+        distance_threshold=None if n_hablantes else umbral,
+        metric="cosine", linkage="average").fit(H[largos])
+    centros = np.vstack([H[largos][grupo.labels_ == k].mean(axis=0)
+                         for k in range(grupo.n_clusters_)])
+    etiquetas = (H @ centros.T).argmax(axis=1)
+    etiquetas[largos] = grupo.labels_
+
+    # numerar por orden de aparición: H1 es quien habla primero
+    orden = {k: i for i, k in enumerate(dict.fromkeys(etiquetas.tolist()))}
+    return [orden[e] for e in etiquetas.tolist()]
+
 # El clip multihablante no se parte: partirlo repartiría las voces entre bloques y dejaría a la
 # diarización sin el caso que el enunciado pide.
 NO_PARTIR = {"clip_06"}
