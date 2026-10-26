@@ -8,11 +8,11 @@ Entonces, primero podría comenzarme diciendo su nombre, por favor?
 
 3
 00:00:10,000 --> 00:00:12,000
-Mi nombre es Aurora Coronado.
+Mi nombre es [PERSONA_4].
 
 4
 00:00:12,000 --> 00:00:15,000
-Aurora Coronado, bien. Primera pregunta por usted.
+[PERSONA_4], bien. Primera pregunta por usted.
 
 5
 00:00:15,000 --> 00:00:17,000

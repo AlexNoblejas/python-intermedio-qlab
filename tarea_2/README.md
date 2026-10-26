@@ -8,8 +8,8 @@ Alexander Noblejas (`@AlexNoblejas`) · Python Intermedio, Diplomatura en Cienci
 | | |
 |---|---|
 | Dashboard público | https://python-intermedio-qlab-qox3j4nfanst5wjydfsmu3.streamlit.app/ |
-| CER — PaddleOCR sobre 10 documentos | **0.2660** |
-| WER — faster-whisper small sobre 10 clips | **0.2117** |
+| CER — PaddleOCR sobre 10 documentos | **0.2609** |
+| WER — faster-whisper small sobre 10 clips | **0.2037** |
 | Acuerdo LLM–humano | **5/20** |
 
 ---
@@ -37,7 +37,7 @@ en [`datos/fuentes.csv`](datos/fuentes.csv); el inventario vive en
 |---|---|---|---|
 | `calle` | 8 | 15.1 | Entrevistas de calle, Wikimedia Perú y colaboradores (2022) |
 | `conferencia` | 3 | 4.2 | Dirigente de Fenmucarinap en conferencia de prensa |
-| `testimonio` | 6 | 8.8 | Testimonio de Lucinda Quispealaya, Junín |
+| `testimonio` | 6 | 8.8 | Testimonio de [PERSONA_5], Junín |
 | `resonando` | 14 | 11.2 | Proyecto *Resonando Juntas* (WikiAcción Perú + Asimtría) |
 | `ruido` | 2 | 1.7 | Consignas coreadas en marcha: multitud y música |
 
@@ -60,8 +60,8 @@ Como reserva para la bonificación hay tres entrevistas en **quechua de Huaylas*
 ## Ética y datos personales
 
 - Las entrevistas de calle nombran personas reales. Todo texto publicado pasa por
-  `voz.seudonimizar` —comparación difusa, que atrapa el nombre aunque el modelo lo haya escrito
-  mal— **y** por revisión manual, además de un control automático que busca patrones de DNI y
+  `privacidad.seudonimizar_texto` —mapa privado con variantes identificadas de los nombres—
+  **y** por revisión de las copias publicadas, además de un control automático que busca patrones de DNI y
   correos. El procedimiento automático no sustituye la lectura humana.
 - Los testimonios de *Resonando Juntas* ya fueron recogidos de forma anónima por el proyecto.
 - Las descargas respetan las condiciones de Wikimedia y de gob.pe: `User-Agent` descriptivo y
@@ -180,3 +180,27 @@ tarea_2/
 El corpus crudo (`datos/raw/`) y el audio convertido (`datos/audio_16k/`) no se versionan: se
 recuperan con los dos scripts de corpus, y `datos/fuentes.csv` documenta de dónde sale cada
 archivo.
+
+
+## Protección de la publicación — 26 de octubre de 2026
+
+Se sustituyeron los nombres y apodos identificados en transcripciones, referencias manuales,
+OCR, JSON del LLM, TXT/SRT, Excel y salidas guardadas de los notebooks. Los seudónimos son
+consistentes entre copias. Las atribuciones de autoría y las URLs oficiales de las fuentes
+se conservan para cumplir las licencias y permitir recuperar el corpus. Estas URLs pueden
+identificar el material original: la seudonimización del texto no implica anonimato irreversible.
+
+El mapa de equivalencias vive solo en `.privado/seudonimos.json` y `.privado/` está excluido de Git.
+El dashboard utiliza únicamente los resultados protegidos y no necesita ese mapa ni una clave API.
+Para repetir la extracción de originales se necesita el mapa local y una nueva revisión antes de
+publicar; el repositorio público por sí solo no incluye el mapa de identidades.
+
+Se retiraron de la selección pública dos imágenes con nombres en firmas y tres audios de ejemplo
+que contienen nombres o apodos. Sus registros siguen disponibles como texto y metadatos. Los
+originales de procesamiento permanecen en las carpetas locales excluidas de Git; el generador
+de ejemplos ya omite esas copias. Quedan 8 imágenes y 3 audios de ejemplo.
+
+Las métricas del encabezado y `datos/resultados.json` se recalcularon sobre los textos protegidos,
+con la misma normalización de la entrega original, sin ejecutar nuevamente OCR, ASR o LLM.
+Las cifras redondeadas de los hallazgos originales describen la evaluación anterior a esta
+protección. La auditoría conserva los 20 juicios humanos originales (5/20).

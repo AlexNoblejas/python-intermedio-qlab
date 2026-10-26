@@ -1,6 +1,6 @@
 1
 00:00:00,000 --> 00:00:07,000
-A ver, buenas noches, primeramente es mi nombre Jean-Piervenegas, soy estudiante de la Universidad San Marcos.
+A ver, buenas noches, primeramente es mi nombre [PERSONA_6], soy estudiante de la Universidad San Marcos.
 
 2
 00:00:07,000 --> 00:00:09,000
@@ -20,7 +20,7 @@ A ver, buenas noches.
 
 6
 00:00:15,710 --> 00:00:19,710
-Si, buenas noches, mi nombre es Jean-Pierre Venegas, soy estudiante de la Universidad San Marcos.
+Si, buenas noches, mi nombre es [PERSONA_6], soy estudiante de la Universidad San Marcos.
 
 7
 00:00:19,710 --> 00:00:20,710
@@ -28,11 +28,11 @@ Si, buenas noches, mi nombre es Jean-Pierre Venegas, soy estudiante de la Univer
 
 8
 00:00:20,710 --> 00:00:22,710
-Alex Giles.
+[PERSONA_7].
 
 9
 00:00:22,710 --> 00:00:26,710
-Señor Alex, esta entrevista va a ser publicada en un foro de internet, ¿está de acuerdo?
+Señor [PERSONA_7], esta entrevista va a ser publicada en un foro de internet, ¿está de acuerdo?
 
 10
 00:00:26,710 --> 00:00:27,710

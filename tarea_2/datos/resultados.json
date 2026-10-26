@@ -1,8 +1,8 @@
 {
-  "CER": 0.266,
-  "WER": 0.2117,
-  "CER_segundo_ocr": 0.3082,
-  "WER_segundo_asr": 0.1219,
+  "CER": 0.2609,
+  "WER": 0.2037,
+  "CER_segundo_ocr": 0.3024,
+  "WER_segundo_asr": 0.1188,
   "acuerdo_llm_humano": 0.25,
   "n_documentos": 26,
   "n_clips": 33,

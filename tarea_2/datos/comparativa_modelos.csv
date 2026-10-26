@@ -1,5 +1,5 @@
 modalidad,modelo,metrica,valor,seg_por_unidad
-documentos,"PaddleOCR 3.7 (base, transformers, CPU)",CER,0.266,251.0
-documentos,"EasyOCR 1.7.2 (CRAFT + CRNN, lang=es, CPU, canvas_size=1280)",CER,0.3082,21.6
-audio,"faster-whisper small (base, CPU int8)",WER,0.2117,0.51
-audio,"whisper-large-v3-turbo (Groq, servido por API)",WER,0.1219,0.02
+documentos,"PaddleOCR 3.7 (base, transformers, CPU)",CER,0.2609,251.0
+documentos,"EasyOCR 1.7.2 (CRAFT + CRNN, lang=es, CPU, canvas_size=1280)",CER,0.3024,21.6
+audio,"faster-whisper small (base, CPU int8)",WER,0.2037,0.51
+audio,"whisper-large-v3-turbo (Groq, servido por API)",WER,0.1188,0.02

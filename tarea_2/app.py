@@ -82,7 +82,7 @@ son capturas propias sin datos personales reales.
 **Modelos.** OCR: {res.get('modelo_ocr', '—')} · ASR: {res.get('modelo_asr', '—')} ·
 LLM: {res.get('modelo_llm', '—')}. Todo corrió en CPU.
 
-**Ética.** Todo texto publicado pasó por seudonimización automática con comparación difusa
+**Ética.** Todo texto publicado pasó por seudonimización con un mapa privado de variantes
 **y** por revisión humana. Las descargas respetaron las condiciones de Wikimedia:
 User-Agent descriptivo y pausa de 1,5 s entre peticiones.
 """)

@@ -1,6 +1,6 @@
 1
 00:00:00,000 --> 00:00:04,000
-mi nombre es Lucinda Quispealaya Salvatierra.
+mi nombre es [PERSONA_5].
 
 2
 00:00:04,000 --> 00:00:08,000

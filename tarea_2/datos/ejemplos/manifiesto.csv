@@ -1,7 +1,5 @@
 id,tipo,archivo,kb
 impreso_02,imagen,datos/ejemplos/imagenes/impreso_02.jpg,323
-impreso_04,imagen,datos/ejemplos/imagenes/impreso_04.jpg,274
-impreso_08,imagen,datos/ejemplos/imagenes/impreso_08.jpg,99
 foto_01,imagen,datos/ejemplos/imagenes/foto_01.jpg,156
 foto_04,imagen,datos/ejemplos/imagenes/foto_04.jpg,153
 foto_07,imagen,datos/ejemplos/imagenes/foto_07.jpg,256
@@ -10,8 +8,5 @@ manu_03,imagen,datos/ejemplos/imagenes/manu_03.jpg,186
 manu_06,imagen,datos/ejemplos/imagenes/manu_06.jpg,195
 manu_09,imagen,datos/ejemplos/imagenes/manu_09.jpg,314
 clip_08,audio,datos/ejemplos/audio/clip_08.wav,630
-clip_07,audio,datos/ejemplos/audio/clip_07.wav,935
-clip_23,audio,datos/ejemplos/audio/clip_23.wav,1043
 clip_25,audio,datos/ejemplos/audio/clip_25.wav,1357
 clip_26,audio,datos/ejemplos/audio/clip_26.wav,1751
-clip_03,audio,datos/ejemplos/audio/clip_03.wav,2420

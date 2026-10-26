@@ -10,12 +10,12 @@ clip_08,clip_08,datos/audio_16k/clip_08.wav,20.15,0.0,calle,2,Ariana Lucero De L
 clip_09_a,clip_09,datos/audio_16k/clip_09_a.wav,94.22,0.0,conferencia,2,QM Keen,Dirigente de Fenmucarinap (sierra central) en una conferencia de prensa (2022)
 clip_09_b,clip_09,datos/audio_16k/clip_09_b.wav,90.53,94.22,conferencia,2,QM Keen,Dirigente de Fenmucarinap (sierra central) en una conferencia de prensa (2022)
 clip_09_c,clip_09,datos/audio_16k/clip_09_c.wav,65.87,184.75,conferencia,2,QM Keen,Dirigente de Fenmucarinap (sierra central) en una conferencia de prensa (2022)
-clip_10_a,clip_10,datos/audio_16k/clip_10_a.wav,111.31,0.0,testimonio,1,Wikimedia Commons,"Testimonio de Lucinda Quispealaya, Junín: el audio más largo del corpus (8,8 min)"
-clip_10_b,clip_10,datos/audio_16k/clip_10_b.wav,90.85,111.31,testimonio,1,Wikimedia Commons,"Testimonio de Lucinda Quispealaya, Junín: el audio más largo del corpus (8,8 min)"
-clip_10_c,clip_10,datos/audio_16k/clip_10_c.wav,92.75,202.16,testimonio,1,Wikimedia Commons,"Testimonio de Lucinda Quispealaya, Junín: el audio más largo del corpus (8,8 min)"
-clip_10_d,clip_10,datos/audio_16k/clip_10_d.wav,107.29,294.91,testimonio,1,Wikimedia Commons,"Testimonio de Lucinda Quispealaya, Junín: el audio más largo del corpus (8,8 min)"
-clip_10_e,clip_10,datos/audio_16k/clip_10_e.wav,95.13,402.2,testimonio,1,Wikimedia Commons,"Testimonio de Lucinda Quispealaya, Junín: el audio más largo del corpus (8,8 min)"
-clip_10_f,clip_10,datos/audio_16k/clip_10_f.wav,29.53,497.33,testimonio,1,Wikimedia Commons,"Testimonio de Lucinda Quispealaya, Junín: el audio más largo del corpus (8,8 min)"
+clip_10_a,clip_10,datos/audio_16k/clip_10_a.wav,111.31,0.0,testimonio,1,Wikimedia Commons,"Testimonio de [PERSONA_5], Junín: el audio más largo del corpus (8,8 min)"
+clip_10_b,clip_10,datos/audio_16k/clip_10_b.wav,90.85,111.31,testimonio,1,Wikimedia Commons,"Testimonio de [PERSONA_5], Junín: el audio más largo del corpus (8,8 min)"
+clip_10_c,clip_10,datos/audio_16k/clip_10_c.wav,92.75,202.16,testimonio,1,Wikimedia Commons,"Testimonio de [PERSONA_5], Junín: el audio más largo del corpus (8,8 min)"
+clip_10_d,clip_10,datos/audio_16k/clip_10_d.wav,107.29,294.91,testimonio,1,Wikimedia Commons,"Testimonio de [PERSONA_5], Junín: el audio más largo del corpus (8,8 min)"
+clip_10_e,clip_10,datos/audio_16k/clip_10_e.wav,95.13,402.2,testimonio,1,Wikimedia Commons,"Testimonio de [PERSONA_5], Junín: el audio más largo del corpus (8,8 min)"
+clip_10_f,clip_10,datos/audio_16k/clip_10_f.wav,29.53,497.33,testimonio,1,Wikimedia Commons,"Testimonio de [PERSONA_5], Junín: el audio más largo del corpus (8,8 min)"
 clip_11,clip_11,datos/audio_16k/clip_11.wav,42.62,0.0,resonando,1,"Lidituo (Resonando Juntas, WikiAcción Perú)",Testimonio anónimo leído en voz alta
 clip_12,clip_12,datos/audio_16k/clip_12.wav,82.0,0.0,resonando,1,"Lidituo (Resonando Juntas, WikiAcción Perú)",Testimonio anónimo leído en voz alta
 clip_13,clip_13,datos/audio_16k/clip_13.wav,42.5,0.0,resonando,1,"Lidituo (Resonando Juntas, WikiAcción Perú)",Testimonio anónimo leído en voz alta

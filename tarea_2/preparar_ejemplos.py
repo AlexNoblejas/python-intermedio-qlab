@@ -28,11 +28,11 @@ EJEMPLOS = DATOS / "ejemplos"
 ANCHO = 1200
 CALIDAD = 80
 
-# una muestra de cada tipo de documento, con los evaluados incluidos
-IMAGENES = ["impreso_02", "impreso_04", "impreso_08", "foto_01", "foto_04", "foto_07",
+# Selección revisada: se omiten imágenes con firmas y audios con nombres o apodos.
+IMAGENES = ["impreso_02", "foto_01", "foto_04", "foto_07",
             "manu_01", "manu_03", "manu_06", "manu_09"]
 # clips cortos, uno por condición de grabación
-AUDIOS = ["clip_08", "clip_07", "clip_23", "clip_25", "clip_26", "clip_03"]
+AUDIOS = ["clip_08", "clip_25", "clip_26"]
 
 
 def imagenes() -> list[dict]:

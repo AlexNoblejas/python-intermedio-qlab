@@ -1,6 +1,6 @@
 1
 00:00:00,000 --> 00:00:20,000
-Nos encontramos aquí con el señor Carlos Ramírez, señor Carlos, esta entrevista va a ser subida en internet, ¿está usted de acuerdo con eso?
+Nos encontramos aquí con el señor [PERSONA_8], señor [PERSONA_8], esta entrevista va a ser subida en internet, ¿está usted de acuerdo con eso?
 
 2
 00:00:20,460 --> 00:00:27,460
