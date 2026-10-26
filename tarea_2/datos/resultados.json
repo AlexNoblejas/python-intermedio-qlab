@@ -1,0 +1,15 @@
+{
+  "CER": 0.266,
+  "WER": 0.2117,
+  "CER_segundo_ocr": 0.3082,
+  "WER_segundo_asr": 0.1219,
+  "acuerdo_llm_humano": 0.25,
+  "n_documentos": 26,
+  "n_clips": 33,
+  "minutos_audio": 41.0,
+  "modelo_ocr": "PaddleOCR 3.7",
+  "modelo_asr": "faster-whisper small",
+  "modelo_llm": "openai/gpt-oss-120b",
+  "segundo_ocr": "EasyOCR 1.7.2 (CRAFT + CRNN, lang=es, CPU, canvas_size=1280)",
+  "segundo_asr": "whisper-large-v3-turbo (Groq, servido por API)"
+}

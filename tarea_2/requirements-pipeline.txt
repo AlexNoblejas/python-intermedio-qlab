@@ -20,7 +20,6 @@ pytesseract>=0.3.13
 
 # ASR (sesión 13)
 faster-whisper>=1.2.1
-librosa>=0.11
 soundfile>=0.13
 jiwer>=4.0
 rapidfuzz>=3.9
@@ -29,7 +28,11 @@ scipy>=1.14
 # Diarización y modelos alternativos
 transformers>=4.56
 torch>=2.4
+torchvision>=0.28          # PaddleOCR lo pide para su procesador de imágenes
 accelerate>=1.10
+librosa>=0.11              # MFCC para la diarización; arrastra scikit-learn
+easyocr>=1.7               # segundo OCR de la comparación (CRAFT + CRNN)
+groq>=1.7                  # LLM de la extracción estructurada; la clave va por entorno
 
 # Gráficos y notebooks
 plotly==5.24.1

@@ -13,6 +13,15 @@ este script entero, así que lo aislamos y miramos el código de salida.
 """
 from __future__ import annotations
 
+# torch va PRIMERO, antes de numpy/pandas/scipy. En Windows, con conda base activo encima del
+# venv, cargarlo después de otra librería que ya trajo su propio OpenMP/MKL rompe sus DLL con
+# WinError 1114 en c10.dll. Importado primero, gana la carrera y funciona.
+try:
+    import torch
+except Exception as _e:
+    torch = None
+    print(f"[AVISO] torch no carga: {type(_e).__name__}: {_e}")
+
 import shutil
 import subprocess
 import sys
@@ -52,9 +61,11 @@ if xlsx.exists():
 
 # ─────────────────────────────────────────────── 2. versiones
 titulo("2. Versiones y dispositivo")
-import torch
-print(f"python {sys.version.split()[0]} · torch {torch.__version__} · "
-      f"cuda disponible: {torch.cuda.is_available()}", flush=True)
+if torch is None:
+    print("torch NO carga: PaddleOCR con engine=transformers no podrá correr", flush=True)
+else:
+    print(f"python {sys.version.split()[0]} · torch {torch.__version__} · "
+          f"cuda disponible: {torch.cuda.is_available()}", flush=True)
 try:
     import paddleocr
     print(f"paddleocr {paddleocr.__version__}", flush=True)

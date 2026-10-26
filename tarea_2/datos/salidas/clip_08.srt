@@ -1,0 +1,15 @@
+1
+00:00:00,000 --> 00:00:05,000
+¿Cómo te sientes cuando hay partidos de Perú?
+
+2
+00:00:05,000 --> 00:00:11,000
+Porque van a ganar a Perú.
+
+3
+00:00:11,000 --> 00:00:15,000
+¿Y si no ganan a Perú?
+
+4
+00:00:15,230 --> 00:00:20,230
+Pues me pongo a disto.

@@ -1,0 +1,427 @@
+id,archivo,tipo,fuente,texto_ocr,modelo_ocr,texto_referencia,n_lineas,confianza_media,n_caracteres,segundos_ocr,cer_paddleocr,texto_ocr2,segundos_ocr2,cer_ocr2
+impreso_02,datos/raw/documentos/impreso_02.jpg,impreso,"R. de Presidencia de Consejo Directivo N° 037-2026/CEPLAN/PCD — Texto oficial de carácter administrativo — sin protección (DL 822, art. 9)","Que, mediante Resolución Directoral N° 0009-2024-EF, publicada en el
+Diario Oficial “El Peruano” con fecha 13 de febrero de 2024, se aprueba la Directiva
+N° 0001-2024-EF/50.01, Directiva para la Ejecución Presupuestaria;
+Que, sobre el particular, los incisos i) y ii) del literal b) del numeral 24.1 del
+artículo 24 de la citada Directiva señalan que las modificaciones presupuestarias en
+el nivel funcional programático, efectuadas en el mes respectivo, se formalizan por
+resolución del Titular del Pliego en los plazos establecidos en el respectivo Cuadro
+de Plazos, detallando la sección, Unidad Ejecutora, Categoría Presupuestal,
+Producto y/o Proyecto según corresponda, Actividad, Fuente de Financiamiento,
+Categoría del Gasto y Genérica del Gasto. Asimismo, las modificaciones
+presupuestarias que se efectúen deben permitir asegurar el cumplimiento de la
+meta, de acuerdo a la oportunidad de su ejecución y según la priorización de gastos
+aprobada por el Titular del Pliego;
+Que, mediante Informe N° 056-2026-CEPLAN-OPP, la Oficina de
+Planeamiento y Presupuesto señala que, durante el mes de mayo de 2026, se
+realizaron modificaciones presupuestarias en el Nivel Funcional Programático
+dentro del marco del Presupuesto Institucional vigente del Pliego 016: Centro
+Nacional de Planeamiento Estratégico - CEPLAN, las cuales corresponde formalizar
+en cumplimiento de los procedimientos establecidos en la Directiva N° 0001-2024-
+EF/50.01, “Directiva para la Ejecución Presupuestaria” y sus modificatorias;
+considerando las limitaciones previstas en el artículo 48 del Decreto Legislativo N°
+1440, Decreto Legislativo del Sistema Nacional de Presupuesto Público, así como
+en la Ley N° 32513, Ley de Presupuesto del Sector Público para el Año Fiscal
+0二0
+Que, la Oficina de Planeamiento y Presupuesto emitió su conformidad a la
+Nota de Modificación Presupuestal N° 040 correspondiente al mes de mayo 2026;
+Con el visado del Director Ejecutivo, del Jefe de la Oficina de Planeamiento
+y Presupuesto, del Jefe de la Oficina General de Administración y del Jefe de la
+Oficina de Asesoría Jurídica del Centro Nacional de Planeamiento Estratégico -
+CEPN;
+De conformidad con el Decreto Legislativo N° 1088, Ley del Sistema
+Nacional de Planeamiento Estratégico y del Centro Nacional de Planeamiento
+Estratégico – CEPLAN, modificado por Decreto Legislativo N° 1730; el Decreto
+Legislativo N° 1440, Decreto Legislativo del Sistema Nacional de Presupuesto
+Público; el artículo 40 de la Ley N° 28411, Ley General del Sistema Nacional de
+Presupuesto; Ley N° 32513, Ley de Presupuesto del Sector Público para el Año
+Fiscal 2026; la Directiva N° 0001-2024-EF/50.01, Directiva para la Ejecución
+Presupuestaria y sus modificatorias; y en uso de las facultades establecidas en el
+Reglamento de Organización y Funciones del Centro Nacional de Planeamiento
+Estratégico – CEPLAN, aprobado mediante Decreto Supremo Nº 046-2009-PCM;
+Página2de3","PaddleOCR 3.7.0 (engine=transformers, lang=es, device=cpu)","REPÚBLICA DEL PERÚ
+
+Que, mediante Resolución Directoral N° 0009-2024-EF, publicada en el Diario Oficial “El Peruano” con fecha 13 de febrero de 2024, se aprueba la Directiva N° 0001-2024-EF/50.01, Directiva para la Ejecución Presupuestaria;
+
+Que, sobre el particular, los incisos i) y ii) del literal b) del numeral 24.1 del artículo 24 de la citada Directiva señalan que las modificaciones presupuestarias en el nivel funcional programático, efectuadas en el mes respectivo, se formalizan por resolución del Titular del Pliego en los plazos establecidos en el respectivo Cuadro de Plazos, detallando la sección, Unidad Ejecutora, Categoría Presupuestal, Producto y/o Proyecto según corresponda, Actividad, Fuente de Financiamiento, Categoría del Gasto y Genérica del Gasto. Asimismo, las modificaciones presupuestarias que se efectúen deben permitir asegurar el cumplimiento de la meta, de acuerdo a la oportunidad de su ejecución y según la priorización de gastos aprobada por el Titular del Pliego;
+
+Que, mediante Informe N° 056-2026-CEPLAN-OPP, la Oficina de Planeamiento y Presupuesto señala que, durante el mes de mayo de 2026, se realizaron modificaciones presupuestarias en el Nivel Funcional Programático dentro del marco del Presupuesto Institucional vigente del Pliego 016: Centro Nacional de Planeamiento Estratégico - CEPLAN, las cuales corresponde formalizar en cumplimiento de los procedimientos establecidos en la Directiva N° 0001-2024-EF/50.01, “Directiva para la Ejecución Presupuestaria” y sus modificatorias; considerando las limitaciones previstas en el artículo 48 del Decreto Legislativo N° 1440, Decreto Legislativo del Sistema Nacional de Presupuesto Público, así como en la Ley N° 32513, Ley de Presupuesto del Sector Público para el Año Fiscal 2026;
+
+Que, la Oficina de Planeamiento y Presupuesto emitió su conformidad a la Nota de Modificación Presupuestal N° 040 correspondiente al mes de mayo 2026;
+
+Con el visado del Director Ejecutivo, del Jefe de la Oficina de Planeamiento y Presupuesto, del Jefe de la Oficina General de Administración y del Jefe de la Oficina de Asesoría Jurídica del Centro Nacional de Planeamiento Estratégico - CEPLAN;
+
+De conformidad con el Decreto Legislativo N° 1088, Ley del Sistema Nacional de Planeamiento Estratégico y del Centro Nacional de Planeamiento Estratégico – CEPLAN, modificado por Decreto Legislativo N° 1730; el Decreto Legislativo N° 1440, Decreto Legislativo del Sistema Nacional de Presupuesto Público; el artículo 40 de la Ley N° 28411, Ley General del Sistema Nacional de Presupuesto; Ley N° 32513, Ley de Presupuesto del Sector Público para el Año Fiscal 2026; la Directiva N° 0001-2024-EF/50.01, Directiva para la Ejecución Presupuestaria y sus modificatorias; y en uso de las facultades establecidas en el Reglamento de Organización y Funciones del Centro Nacional de Planeamiento Estratégico – CEPLAN, aprobado mediante Decreto Supremo N° 046-2009-PCM;
+
+Página 2 de 3",41,0.977,2920,616.06,0.0098,"z6PÚBLICA DEL < :
+Que,   mediante   Resolución Directoral NP   0009-2024-EF publicada en el Diario Oficial ""El Peruano' con fecha 13 de febrero de 2024 se aprueba la Directiva N' 0001-2024-EFI50.01, Directiva para la Ejecución Presupuestaria;
+Que sobre el particular, los incisos i) y ii) del literal b) del numeral 24.1 del artículo 24 de la citada Directiva señalan que las modificaciones presupuestarias en nivel funcional programático; efectuadas en el mes respectivo se formalizan por resolución del Titular del Pliego en los plazos establecidos en el respectivo Cuadro de Plazos, detallando la sección; Unidad Ejecutora Categoría Presupuestal, Producto ylo Proyecto según corresponda; Actividad, Fuente de Financiamiento; Categoría del Gasto y Genérica del Gasto. Asimismo; as modificaciones presupuestarias  que se efectúen deben permitir asegurar el cumplimiento de la meta de acuerdo a la oportunidad de su ejecución según la priorización de gastos aprobada por el Titular del Pliego;
+Que, mediante Informe N 056-2026-CEPLAN-OPP la Oficina de Planeamiento y Presupuesto señala que durante el mes de mayo de 2026 se realizaron modificaciones presupuestarias en el Nivel Funcional   Programático dentro del marco   del Presupuesto  Institucional  vigente del Pliego 016: Centro Nacional de Planeamiento Estratégico CEPLAN, las cuales corresponde formalizar en cumplimiento de los procedimientos establecidos en la Directiva N? 0001-2024- EFI50.01, Directiva para la Ejecución Presupuestaria SUS modificatorias; considerando las limitaciones previstas en el artículo 48 del Decreto Legislativo NS 1440, Decreto Legislativo del Sistema Nacional de Presupuesto Público _ así como en la Ley N  32513, Ley de Presupuesto del Sector Público para el Año Fiscal 2026;
+Que; la Oficina de Planeamiento y Presupuesto emitió su conformidad a la Nota de Modificación Presupuestal N' 040 correspondiente al mes de mayo 2026; Con el visado del Director Ejecutivo; del Jefe de la Oficina de Planeamiento y Presupuesto; del Jefe de la Oficina General de Administración y del Jefe de la Oficina de Asesoría Jurídica del Centro Nacional de Planeamiento Estratégico CEPLAN;
+De conformidad con el Decreto   Legislativo NP   1088, Ley del   Sistema Nacional de Planeamiento Estratégico y del  Centro Nacional de Planeamiento Estratégico CEPLAN; modificado por Decreto Legislativo N'   1730; el Decreto Legislativo N'   1440, Decreto Legislativo del Sistema Nacional de Presupuesto Público; el artículo 40 de la Ley N' 28411, Ley General del Sistema Nacional de Presupuesto; Ley NP 32513, Ley de Presupuesto del Sector Público para el Año Fiscal   2026; la Directiva N' 0001-2024-EFI50.01 Directiva para la Ejecución Presupuestaria y sus modificatorias; y en uso de las facultades establecidas en el Reglamento de Organización y Funciones del Centro Nacional de Planeamiento Estratégico - CEPLAN; aprobado mediante Decreto Supremo NP 046-2009-PCM;
+Página de",41.3,0.0129
+impreso_04,datos/raw/documentos/impreso_04.jpg,impreso,"R. de Presidencia de Consejo Directivo N° 033-2026/CEPLAN/PCD — Texto oficial de carácter administrativo — sin protección (DL 822, art. 9)","CEPIANK
+Centro Nacicnal de Plancamiento Estizégico
+Firmado digitalmente por
+VALCARCEL SALDAÑA Juan Julio
+FAU 20520594451 soft
+Motivo: Doy Vv° B
+Fecha: 26.05.2026 15:48:47 -05:00
+CEPLAAK
+Centro Nacicnal de Plancamiento Estrzógico
+Firmado digitalmente por MORI
+KURIYAMA Virgilio Antonio FAU
+20520594451 soft
+Motivo: Doy V° B°
+Fecha: 26.05.2026 15:53:17 -05:00
+ético de los sistemas basados en IA del CEPLAN""; asimismo, mediante Acta de Sesión
+CEPIANK
+N.° 25, el Comité de Gobierno Digital aprobó la referida propuesta y recomendó su
+formalización mediante Resolución de Presidencia del Consejo Directivo, por encontrarse
+Centro Nacicnal de Plancamiento Estizégico
+alineada con el marco normativo vigente y los objetivos institucionales del CEPLAN;
+Firmado digitalmente por DE LA
+FLOR SAENZ Luis Enrique FAU
+20520594451 soft
+Motivo: Doy V° B°
+Con el visado del Director Ejecutivo, del Jefe de la Oficina de Planeamiento y
+Fecha: 26.05.2026 16:15:37 -05:00
+Presupuesto y del Jefe de la Oficina de Asesoría Jurídica del Centro Nacional de
+Planeamiento Estratégico CEPLAN; y,
+De conformidad con el Decreto Legislativo N.° 1088, Ley del Sistema Nacional de
+Planeamiento Estratégico y del Centro Nacional de Planeamiento Estratégico, modificado
+por el Decreto Legislativo N.° 1730; el Decreto Legislativo N.° 1412, Decreto Legislativo
+que aprueba la Ley de Gobierno Digital, y su Reglamento aprobado mediante Decreto
+Supremo N.° 029-2021-PCM; la Ley N.° 31814, Ley que promueve el uso de la
+Inteligencia Artificial en favor del desarrollo económico y social del país, y su Reglamento
+aprobado mediante Decreto Supremo N.° 115-2025-PCM; la Resolución Ministerial N.°
+152-2026-PCM, que aprueba la Estrategia Nacional de Inteligencia Artificial 2026-2030;
+y en uso de las facultades previstas en el Reglamento de Organización y Funciones del
+Centro Nacional de Planeamiento Estratégico – CEPLAN, aprobado mediante Decreto
+Supremo N.°046-2009-PCM;
+SE RESUELVE:
+Artículo 1.- APROBAR la Política institucional del uso seguro, responsable y
+ético de los sistemas basados en IA del Centro Nacional de Planeamiento Estratégico -
+CEPLAN, que como Anexo forma parte integrante de la presente Resolución.
+Artículo 2.- NOTIFICAR la presente Resolución a la Secretaría de Gobierno y
+Transformación Digital de la Presidencia del Consejo de Ministros.
+Artículo 3.- DIFUNDIR la presente Resolución a los servidores de la entidad.
+Artículo 4.- DISPONER que la Oficina General de Administración realice las
+gestiones para la publicación de la presente Resolución y su anexo, en el portal
+institucional del Centro Nacional de Planeamiento Estratégico (www.gob.pe/ceplan).
+Regístrese y comuníquese.
+Firmado digitalmente por PEIRANO
+CEPLANK
+TORRIANI Giofianni Diglio FAU
+20520594451 soft
+Motivo: Soy el autor del documento
+Fecha: 26.05.2026 17:12:35-05:00
+Centro Nacicnal de Plancamiento Estzágico
+GIOFIANNI DIGLIO PEIRANO TORRIANI
+Presidente del Consejo Directivo del CEPLAN
+Página 2 de 2","PaddleOCR 3.7.0 (engine=transformers, lang=es, device=cpu)","Firmado digitalmente por VALCARCEL SALDANA Juan Julio FAU 20520594451 soft Motivo: Doy V° B° Fecha: 26.05.2026 15:48:47 -05:00
+
+Firmado digitalmente por MORI KURIYAMA Virgilio Antonio FAU 20520594451 soft Motivo: Doy V° B° Fecha: 26.05.2026 15:53:17 -05:00
+
+Firmado digitalmente por DE LA FLOR SAENZ Luis Enrique FAU 20520594451 soft Motivo: Doy V° B° Fecha: 26.05.2026 16:15:37 -05:00
+
+REPÚBLICA DEL PERÚ
+
+ético de los sistemas basados en IA del CEPLAN”; asimismo, mediante Acta de Sesión N.° 25, el Comité de Gobierno Digital aprobó la referida propuesta y recomendó su formalización mediante Resolución de Presidencia del Consejo Directivo, por encontrarse alineada con el marco normativo vigente y los objetivos institucionales del CEPLAN;
+
+Con el visado del Director Ejecutivo, del Jefe de la Oficina de Planeamiento y Presupuesto y del Jefe de la Oficina de Asesoría Jurídica del Centro Nacional de Planeamiento Estratégico CEPLAN; y,
+
+De conformidad con el Decreto Legislativo N.° 1088, Ley del Sistema Nacional de Planeamiento Estratégico y del Centro Nacional de Planeamiento Estratégico, modificado por el Decreto Legislativo N.° 1730; el Decreto Legislativo N.° 1412, Decreto Legislativo que aprueba la Ley de Gobierno Digital, y su Reglamento aprobado mediante Decreto Supremo N.° 029-2021-PCM; la Ley N.° 31814, Ley que promueve el uso de la Inteligencia Artificial en favor del desarrollo económico y social del país, y su Reglamento aprobado mediante Decreto Supremo N.° 115-2025-PCM; la Resolución Ministerial N.° 152-2026-PCM, que aprueba la Estrategia Nacional de Inteligencia Artificial 2026-2030; y en uso de las facultades previstas en el Reglamento de Organización y Funciones del Centro Nacional de Planeamiento Estratégico – CEPLAN, aprobado mediante Decreto Supremo N.° 046-2009-PCM;
+
+SE RESUELVE:
+
+Artículo 1.- APROBAR la Política institucional del uso seguro, responsable y ético de los sistemas basados en IA del Centro Nacional de Planeamiento Estratégico - CEPLAN, que como Anexo forma parte integrante de la presente Resolución.
+
+Artículo 2.- NOTIFICAR la presente Resolución a la Secretaría de Gobierno y Transformación Digital de la Presidencia del Consejo de Ministros.
+
+Artículo 3.- DIFUNDIR la presente Resolución a los servidores de la entidad.
+
+Artículo 4.- DISPONER que la Oficina General de Administración realice las gestiones para la publicación de la presente Resolución y su anexo, en el portal institucional del Centro Nacional de Planeamiento Estratégico (www.gob.pe/ceplan).
+
+Regístrese y comuníquese.
+
+Firmado digitalmente por PEIRANO TORRIANI Giofianni Diglio FAU 20520594451 soft Motivo: Soy el autor del documento Fecha: 26.05.2026 17:12:35 -05:00
+
+GIOFIANNI DIGLIO PEIRANO TORRIANI
+Presidente del Consejo Directivo del CEPLAN
+
+Página 2 de 2",60,0.974,2959,507.4,0.1595,"CEPlAn {esico Firmado digit Daror Juan Julio 2052059 Motivo echa: 2985 2026 5.48.47 -05.00
+CEPlAn KURRa Virgilio 'Antonio RonnPRu 205205 Motivo 88 28852026 15:53:17 05.00
+ético de los sistemas basados en IA del CEPLAN""; asimismo mediante Acta de Sesión N.' 25 el Comité de Gobierno Digital aprobó la referida propuesta y recomendó su CEPnuk formalización mediante Resolución de Presidencia de Consejo Directivo. por encontrarse sqico alineada con el marco normativo vigente y los objetivos institucionales del CEPLAN; 'g%git2l ente temqquF4A DE Motivo Vseft 2026 16:15.37-05.00 Con el visado del Director Ejecutivo, del Jefe de la Oficina de Planeamiento Presupuesto y del Jefe de la Oficina de Asesoría Jurídica del Centro Nacional de Planeamiento Estratégico CEPLAN; Y,
+De conformidad con el Decreto Legislativo N. 1088, Ley del Sistema Nacional de Planeamiento Estratégico y del Centro Nacional de Planeamiento Estratégico; modificado por el Decreto Legislativo N. 1730; el Decreto Legislativo N. 1412 Decreto Legislativo que aprueba la Ley de Gobierno Digital, Y su Regi lamento aprobado mediante Decreto Supremo N. 029-2021-PCM; la Ley N: 31814 Ley que promueve el USO de la Inteligencia Artificial en favor del desarrollo económico y social del país, Y su Reglamento probado mediante Decreto Supremo N. 115-2025-PCM; la Resolución Ministerial N. 152-2026-PCM; que aprueba la Estrategia Nacional de Inteligencia Artificial 2026-2030; y en uso de las facultades previstas en el Reglamento de Organización y Funciones del Centro Nacional de Planeamiento Estratégico CEPLAN; aprobado mediante Decreto Supremo N. 046-2009-PCM;
+SE RESUELVE:
+Artículo 1.- APROBAR la Política institucional del usO seguro responsable ético de los sistemas basados en IA del Centro Nacional de Planeamiento Estratégico CEPLAN; que como Anexo forma parte integrante de la presente Resolución.
+Artículo 2.- NOTIFICAR la presente Resolución a la Secretaría de Gobierno y Transformación Digital de la Presidencia del Consejo de Ministros .
+Artículo 3.- DIFUNDIR la presente Resolución a los servidores de la entidad_
+Artículo 4.- DISPONER que la Oficina General de Administración realice las gestiones para la publicación de la presente Resolución y su anexo; en el portal institucional del Centro Nacional de Planeamiento Estratégico (Www gob pelceplan).
+Regístrese y comuníquese.
+diaitalmente IRANO ""Rad;  iann 'B9lioFIRA Motivo: 2026 docunes
+cEPlAnk
+GIOFIANNI DIGLIO PEIRANO TORRIANI Presidente del Consejo Directivo del CEPLAN
+Página de
+gEPÚBLICA DEL 1",40.06,0.1706
+impreso_08,datos/raw/documentos/impreso_08.jpg,impreso,"R. de Presidencia de Consejo Directivo N° 76-2025/CEPLAN/PCD — Texto oficial de carácter administrativo — sin protección (DL 822, art. 9)","CEPIAN
+Centro Nacicnal de Plancamiento Estrzógico
+Firmado digitalmente por
+VALCARCEL SALDAÑA Juan Julio
+FAU 20520594451 soft
+Motivo: Doy V° B°
+Fecha: 27.08.2025 10:39:02 -05:00
+CEPIANK
+Centro Nacicnal de Plancamiento Estizégico
+Firmado digitalmente por
+RIVADENEIRA SANTA MARIA
+Amaro Angel FAU 20520594451
+soft
+Motivo: Doy V° B°
+Fecha: 27.08.2025 10:40:54-05:00
+El Peruano, así como de la actualización del Plan Estratégico de Desarrollo
+CEPIAN
+Nacional, en el Portal Institucional del Centro Nacional de Planeamiento
+Estratégicowww.gob.pe/ceplan
+Centro Nacicnal de Plancamiento Estrzógico
+Firmado digitalmente por
+ATAUCUSÍ ATAUCUŠI Yiem
+Regístrese, comuníquese y publíquese.
+Aurora FAU 20520594451 soft
+Motivo: Doy V° B°
+Fecha: 27.08.202511:24:09-05:00
+CEPIANK
+Firmado digitalmente por PEIRANO
+CEPIAA
+TORRIANI Giofianni Diglio FAU
+20520594451 soft
+Motivo: Soy el autor del documento
+Centro Nacicnal de Plancamiento Estizógico
+Fecha: 27.08.2025 12:34:01-05:00
+Centro Nacicnal de Plancamiento Estzágico
+Firmado digitalmente por DE LA
+FLOR SAENZ Luis Enrique FAU
+20520594451 soft
+GIOFIANNI DIGLIO PEIRANO TORRIANI
+Motivo: Doy V° B°
+Fecha: 27.08.2025 11:56:13 -05:00
+Presidente del Consejo Directivo del CEPLAN
+Página 2 de 2","PaddleOCR 3.7.0 (engine=transformers, lang=es, device=cpu)","Firmado digitalmente por VALCARCEL SALDANA Juan Julio FAU 20520594451 soft Motivo: Doy V° B° Fecha: 27.08.2025 10:39:02 -05:00
+
+Firmado digitalmente por RIVADENEIRA SANTA MARIA Amaro Angel FAU 20520594451 soft Motivo: Doy V° B° Fecha: 27.08.2025 10:40:54 -05:00
+
+Firmado digitalmente por ATAUCUSI ATAUCUSI Yirem Amaro FAU 20520594451 soft Motivo: Doy V° B° Fecha: 27.08.2025 11:24:09 -05:00
+
+Firmado digitalmente por DE LA FLOR SAENZ Luis Enrique FAU 20520594451 soft Motivo: Doy V° B° Fecha: 27.08.2025 11:56:13 -05:00
+
+REPÚBLICA DEL PERÚ
+
+El Peruano, así como de la actualización del Plan Estratégico de Desarrollo Nacional, en el Portal Institucional del Centro Nacional de Planeamiento Estratégico www.gob.pe/ceplan .
+
+Regístrese, comuníquese y publíquese.
+
+Firmado digitalmente por PEIRANO TORRIANI Giofianni Diglio FAU 20520594451 soft Motivo: Soy el autor del documento Fecha: 27.08.2025 12:34:01 -05:00
+
+GIOFIANNI DIGLIO PEIRANO TORRIANI
+Presidente del Consejo Directivo del CEPLAN
+
+Página 2 de 2",43,0.965,1220,313.38,0.6366,"CEPlAA Firmado CAR 8894782888"" Juan Julio FAU 2052059 Motivo: Doy Fecha 7.08.2025 39.02-05.00
+CEPlAN hZsgico ivasg VigitalmsRte ROMARIA Amaro Angel FAU 2052059445 Motivo Fecha: :2988 2025 10.40.54-05.00
+EI Peruano; así como de la actualización del Plan Estratégico de Desarrollo Nacional, en el Portal Institucional del Centro Nacional de Planeamiento Estratégico www_qob pelceplan
+cEPlank TTrad) digitaln 'AECt8 8OYiem 0520594451 soft Motivo: 8882025 224.09-05.00
+Regístrese, comuníquese y publíquese.
+FigRada %igcani digitalmente ANO ofianni 'B9lio FAU CEPlAA 2052059445 Mociva: 8088l282t9r1 8e34o9 un8%8
+CEPlAu Fir8adgAgitzImaste Enrique DFAA 2052059445 Motivo Dov s8f 27.08.2025 11.56.13 05.00
+GIOFIANNI DIGLIO PEIRANO TORRIANI Presidente del Consejo Directivo del CEPLAN
+Página de
+gEPÚBLICA DEL :",23.7,0.589
+foto_01,datos/raw/documentos/foto_01.jpeg,foto,"Captura propia del estudiante, sin datos personales reales","Attention
+Structure De
+This manual is for
+Please read this manual carefully before use and keep it for
+without prior notic
+ector
+future reference.
+interpretation.
+1.The projector is non dustproof or waterproof.
+2.In order to reduce the risk of fire and electric shock, do not
+expose the projector to rain and fog.
+ON/OFF
+3.Please use the original power adapter. The projector should
+work under specified rated power supply.
+4.When projector is working, please do not look directly into
+the lens, the strong light will flash your eyes and cause
+slight pain. Children should use the projector under the
+supervision of adults.
+5.Do not cover the vents of projector. Heating will reduce the
+life of projector and cause danger.
+6.Regularly clean projector vents, or dust may cause cooling
+malfunction.
+Vent
+7.Do not use the projector in greasy, damp, dusty or smoky
+environment. Oil or chemicals will cause malfunction.
+8.Please handle with care during daily use.
+9.Please cut off the power if the projector is out of use for
+long time.
+10.Non-professionals are forbidden to disassemble the
+projector for testing and maintenance.","PaddleOCR 3.7.0 (engine=transformers, lang=es, device=cpu)","ector Attention Please read this manual carefully before use and keep it for future reference. 1. The projector is non dustproof or waterproof. 2. In order to reduce the risk of fire and electric shock, do not expose the projector to rain and fog. 3. Please use the original power adapter. The projector should work under specified rated power supply. 4. When projector is working, please do not look directly into the lens, the strong light will flash your eyes and cause slight pain. Children should use the projector under the supervision of adults. 5. Do not cover the vents of projector. Heating will reduce the life of projector and cause danger. 6. Regularly clean projector vents, or dust may cause cooling malfunction. 7. Do not use the projector in greasy, damp, dusty or smoky environment. Oil or chemicals will cause malfunction. 8. Please handle with care during daily use. 9. Please cut off the power if the projector is out of use for long time. 10. Non-professionals are forbidden to disassemble the projector for testing and maintenance. Structure De This manual is for without prior notic interpretation. ON/OFF Vent",30,0.997,1124,176.76,0.1479,"De Structure manual ís for This prior notid without interpretation.
+Attention Please read this manual carefully before use and keep it for future reference_
+ector
+1.The projector is non dustproof or waterproof 2.In order to reduce the risk of fire and electric shock, do not expose the projector to rain and fog; 3.Please use the original power adapter. The projector should work under specified rated power supply . 4.When projector ís workíng please do not look directly into the lens, the strong light will flash your eyes and cause slight pain. Children should use the projector under the supervision of adults. 5.Do not cover the vents of projector , Heating will reduce the life of projector and cause danger . 6.Regularly clean projector vents, or dust may cause cooling malfunction. 7.Do not use the projector in greasy, damp, dusty or smoky environment. Oil or chemicals will cause malfunction. 8.Please handle with care during daily use. 9.Please cut off the power if the projector is out of use for long time. 10.Non-professionals are forbidden to disassemble the projector for testing and maintenance_
+ON/OFF
+Vent",21.3,0.1243
+foto_04,datos/raw/documentos/foto_04.jpeg,foto,"Captura propia del estudiante, sin datos personales reales"," ota   o
+-MINEDU/SUNEDU)
+Formadors
+Cdificodos
+Docento
+y en desands
+Celifica
+coulinuo
+ontin
+Foansaow
+DE DOCENTES
+NATVOS
+M.S.2
+Serncio del Desa-
+mollo delos/pelsions
+alolago de su vida
+onenteds almerce
+do losoral. formal.","PaddleOCR 3.7.0 (engine=transformers, lang=es, device=cpu)",MINEDU/SUNEDU) Dotación de incentivos e Docentes Formadores calificados y en desarrollo continuo Formación de docentes nativos M.S.2 Servicio del desarrollo de los/personas a lo largo de su vida orientado al mercado laboral formal.,18,0.902,219,81.36,0.3712,"MINEDUISUNEDU)
+1 % 1 Toma doro) CcuFi cocb $ Docana à Qu coencl6 C?le Couluuo Confia
+Fokanow De Ooceues NAnV)
+M, 6.2 sefn G'o d( Deoa- mollo de lo /7fm alo (a 8v de {u vd onentod? ol me Cl do loloral.  formal.",14.28,0.476
+foto_07,datos/raw/documentos/foto_07.jpeg,foto,"Captura propia del estudiante, sin datos personales reales","TINGO MARÍASE
+MUEVECON
+TORITO
+MEJOR NEGOCIO
+AUTOFARTH
+200","PaddleOCR 3.7.0 (engine=transformers, lang=es, device=cpu)",TINGO MARÍA SE MUEVE CON TORITO TU MEJOR NEGOCIO,6,0.881,57,46.98,0.3958,TINGOC [7/pfn8e MUEVEC GOM TORITO E EJOR EGoCio,10.06,0.3125
+manu_01,datos/raw/documentos/manu_01.jpeg,manuscrito,"Captura propia del estudiante, sin datos personales reales","SALIR ADELANTE
+LICENCIADA PARA QUE PUEDAS
+* DEFINE EL PROBLEMA:
+lo bs
+UCV.EDU.PE
+proyuts
+Motiracionipara loser 
+4 lo coreclovided no es un proslema
+ Capeciter agosers en progecta
+No mbore - Orgungo clotr
+Persome y Contexho
+Lushona - Imagino who
+DESIGN THINKING
+Nombre: Menshuando
+para seguir xx
+bntreusto  uavarios
+doveres uor ideoo peon in arictocios
+newtrals
+Ercide
+Bes udorade
+bpenits
+Go wsibilogocion d lio d higien y soba
+respuestes son pata nugthro vevero
+m youins
+Y no ud
+con
+menstral Sin estismas
+en el abor oje de lo 
+aAd
+entauve
+nters, voles, alle
+loe
+pssows
+Siempro
+en lo ligier y sold
+on
+wy
+edwan
+I ame slin
+sive en al ore dt intervcerir
+bora progetes
+everd, ae ve, ar pon
+ya
+n
+sexel
+n
+KSI
+colesio
+1000","PaddleOCR 3.7.0 (engine=transformers, lang=es, device=cpu)","UCV.EDU.PE Estudios neutrales. Opiniones dependientes. No siempre hay. DESIGN THINKING. Persona y Contexto. Nombre - Organización. Historia - Imagina una persona que vive en el área de intervención y no usa redes, roles, año escolar. Identificamos información de su usuario. Nombre: Menstruando. Entrevistas a los usuarios para seguir. DEFINE EL PROBLEMA: Las respuestas son para nuestro usuario. Tener una idea para proyectos. Capacitar a jóvenes en proyecto. La comunidad no es un problema, aunque sea en un colegio. La problemática. Motivación para hacer el proyecto: más jóvenes con educación y calidad, con énfasis en la higiene y salud menstrual sin estigmas. La visibilización del tema de higiene y salud sexual en el abordaje de los ESI. LICENCIADA PARA QUE PUEDAS SALIR ADELANTE.",49,0.837,714,180.01,0.7391,"š 1 1 1 6f f 4 1 1 8 f 1 [ g f 8 7 1Hf 8 V 1 8 1 P { } { { 0/ {5 } { { 14 { 1b7 8 8 8 1 5 1 3 1 ; { { 8 2 Li } $ 9 { 4 1 5 € 7 1 E 1 1 2 9 6 } 4 8 { 2 H g 1t { 8 { { 8 75 E F 8 } @ { 1 0 gr } { 2 { 8 4 { | 8 {
+8",17.24,0.892
+manu_03,datos/raw/documentos/manu_03.jpeg,manuscrito,"Captura propia del estudiante, sin datos personales reales","100D
+C
+Comentario: Sí, el modelo
+64.433- 63.7 mil Hitulos = 0.73 mil titulos
+Normero de titul0 = 100 (0.64433) = 64.433
+Usands elmobels:
+omporarde lo diferencio :
+y=
+I = 0.4T + 0.52433
+2008
+mas bien
+a penas
+los 63.7 mil reales
+a que estima 64. 433 mil Htulos Frente
+manora
+0.4(0.3) +0.52433
+n
+aproximada
+2008-2005
+sobreestima el valor.
+1.15%.Pero wolo predice
+of
+lined predice ese número de
+, con buena precision debido
+,un emor relativo de
+三
+=0.64433
+0.3
+LICENCIADA PARA QUE PUEDAS
+exachmente
+SALIR ADELANTE
+a","PaddleOCR 3.7.0 (engine=transformers, lang=es, device=cpu)","c) T2008 = (2008 - 2005) / 10 = 0.3. Usando el modelo: y = 0.4T + 0.52433. y = 0.4(0.3) + 0.52433 = 0.64433. Número de títulos = 100(0.64433) = 64.433. Comparando la diferencia es: 64.433 - 63.7 mil títulos = 0.73 mil títulos. Comentario: Sí, el modelo lineal predice ese número de manera aproximada, con buena precisión debido a que estima 64.433 mil títulos frente a los 63.7 mil reales, un error relativo de a penas 1.15%. Pero no lo predice exactamente, más bien sobreestima el valor. LICENCIADA PARA QUE PUEDAS SALIR ADELANTE.",32,0.936,510,135.17,0.6653,";
+< 1 1 š 1 & { @ 9 @ "" g $ ! 4 1 f 1 ; 3 9 9 4 : ? 2 } 1 8 } { {1} ; 6 + } 2 5 41 8 0 : 0 { š 8 6 ` ; 5 8 8 { f € { 2 F 2 1 5 Ii 8 Fe 8 1 2 2 8 Ki 2 F 6 8 0 } 8 
+1 9I %i",15.92,0.8554
+manu_06,datos/raw/documentos/manu_06.jpeg,manuscrito,"Captura propia del estudiante, sin datos personales reales","Osoler este nuey ais sea amidle cortig
+Anig's por es coondo conilas
+toat ba lug que tu dos.
+Con una lug de porimaera
+te develke, pogrnile a pogih,
+de es wche todo lobonito Ge Hearas dentho
+no s06 2 esucho tuvos
+De lovagan
+Y Yu exes así.
+guizais porque eprendieron qur tambien
+pase lo tormente par florcear;
+de ulelyen cia
+noble y sin ese
+ane m veceaild tuit paro goue douse
+Yaapncoub.
+UCU.P","PaddleOCR 3.7.0 (engine=transformers, lang=es, device=cpu)","Hay flores que no esperan a que pase la tormenta para florecer; quizás porque aprendieron que también bajo la lluvia se puede guardar belleza. Y tú eres así. De corazón noble y sincero, con una luz que no necesita ruido para que destaque. Quizás por eso cuando cantas no solo se escucha tu voz, se escucha todo lo bonito que llevas dentro. Ojalá este nuevo año sea amable contigo y te devuelva, poquito a poquito, toda la luz que tú das. UCV.EDU.PE.",16,0.84,390,73.98,0.7215,"2 &
+1 < g 3 F { 9 4 { 1 % 1 5 p # { { 5 8 7 8 = 1 < } { K % { 71 1 8 [ 1 f { 8 # < % } { { 2 { 6 8 } | 8 "" 9 "" { 1i } { 41 1[ F P 1 f 7 5 F 5 8 5 } f
+R $ 8 1
+( 0
+{ Q
+Jd' no3^20",16.65,0.8699
+manu_09,datos/raw/documentos/manu_09.jpeg,manuscrito,"Captura propia del estudiante, sin datos personales reales","Vinwlecion
+to No se guorda los selecionsde
+4 no se ven en d sonkey cond
+Arto mero códico wiee wege
+Co tho acion eshatesio asicon Objctio
+estreto'sico se repite Ias veces qu leng
+umdicador
+Lo Po ea teni2 que revisas primer
+I? bay de dato, cono eotobon
+esritos los texts, l2s colman, ete","PaddleOCR 3.7.0 (engine=transformers, lang=es, device=cpu)","Vinculación. No se guarda los seleccionados y no se ven en el scatter canal. Nuevo código que integre. Una acción estratégica así con Objetivo estratégico se repite las veces que tenga indicadores. Por eso tenía que revisar primero la base de datos, como estaban escritos los textos, las columnas, etc.",10,0.883,285,379.0,0.3061,"2 ~wg Srov Jaij vu84 Jàns AL1 ~lx J
+'{Y%6
+Tinukuov
+Saxzon:clk No 8 930,d l? sclecfomode Y v S{ Up Qu J {u Key Cp 04; A~t nuen códc [xe nkse lnv Uutd 0 hkyo GyàLo Olat eohcb'S' Co < rpk las veces 0 J8 mdacadex Qo 00 kmí? Cu rUisa pcc bey J Ja1/ L~o echobo esrifos lo Jexk> I2s ulcan e4
+~Uc 08n)
+(53 Muye
+~147
+É1'j Na
+JaEAs
+98
+7s & Svaais_
+~~cV
+5Y",15.49,0.8401

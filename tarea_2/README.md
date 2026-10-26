@@ -7,10 +7,10 @@ Alexander Noblejas (`@AlexNoblejas`) · Python Intermedio, Diplomatura en Cienci
 
 | | |
 |---|---|
-| Dashboard público | `PENDIENTE` |
-| CER — PaddleOCR sobre 10 documentos | `PENDIENTE` |
-| WER — faster-whisper small sobre 10 clips | `PENDIENTE` |
-| Acuerdo LLM–humano | `PENDIENTE`/20 |
+| Dashboard público | https://python-intermedio-qlab-qox3j4nfanst5wjydfsmu3.streamlit.app/ |
+| CER — PaddleOCR sobre 10 documentos | **0.2660** |
+| WER — faster-whisper small sobre 10 clips | **0.2117** |
+| Acuerdo LLM–humano | **5/20** |
 
 ---
 
@@ -71,8 +71,30 @@ Como reserva para la bonificación hay tres entrevistas en **quechua de Huaylas*
 
 ## Hallazgos
 
-1. `PENDIENTE`
-2. `PENDIENTE`
+**1. El tipo de documento predice la calidad del OCR, y el costo de cómputo va en sentido
+contrario.** La confianza media que reporta PaddleOCR cae de forma limpia y monótona según el
+soporte: **0.99 en los impresos, 0.96 en las fotos de celular y 0.86 en los manuscritos**. El
+único documento que hubo que descartar fue una foto, `foto_06`, de la que el OCR extrajo 15
+caracteres. Lo interesante es que el esfuerzo de cómputo se reparte al revés: los impresos, que
+son los más fáciles de leer, tardaron **630 segundos por página** frente a 194 de un manuscrito
+y 104 de una foto, porque están renderizados a 300 dpi y miden 2481×3508. Es decir, lo que
+encarece el OCR no es la dificultad del texto sino el número de píxeles, y las dos cosas no van
+juntas: se puede pagar seis veces más por la página más fácil del corpus. Para un despliegue
+real la conclusión es operativa: conviene fijar la resolución por tipo de documento, no una
+global.
+
+**2. La condición de grabación pesa más que el modelo, y un modelo más grande estrecha la
+brecha sin cerrarla.** Con faster-whisper `small` el WER va de **0.121 en los testimonios
+leídos en interior a 0.555 en los audios de marcha** con multitud y música: un factor de 4,6
+entre el caso fácil y el difícil del mismo corpus. Al pasar a whisper-large-v3-turbo el error
+baja en todas las condiciones —de 0.212 a 0.122 en el agregado, un 42 % relativo— pero el orden
+no cambia: la marcha sigue siendo lo peor, con 0.353. Es decir, **el modelo grande no arregla
+el audio malo**, solo lo hace menos malo. Donde más gana es en habla leída de español andino
+(el testimonio de Junín pasa de 0.190 a 0.030), lo que sugiere que la diferencia está en la
+cobertura de variedades del idioma más que en la robustez al ruido.
+
+En documentos la misma lógica: el CER del OCR es 0.269 en impresos y 0.305 en fotos, pero
+**0.608 en manuscritos** — el doble. El soporte, no el modelo, es lo que decide.
 
 ## Limitaciones técnicas
 
