@@ -22,6 +22,6 @@ El trabajo pasó por tres conversaciones, en este orden:
 | 2 | `desarrollo/03_chat_chatgpt_001.png` a `004.png` | Capturas del chat «Resumen Tarea 4» en ChatGPT | La primera versión del proyecto, la auditoría con su prompt y el paquete `TAREA_4_SOLO_PARA_CLAUDE_CODE.zip` para Claude Code |
 | 3 | `desarrollo/01_sesion_claude_code.jsonl` | Sesión de Claude Code, con claves y correos ocultos | Revisión contra el Issue, correcciones con datos reales, reescritura de limpieza, gráficos, mapa y evaluación, herramienta propia y todas las corridas |
 
-Las capturas muestran los momentos principales de los chats 1 y 2, no cada mensaje. El registro completo de la conversación 3 está en su archivo.
+Las capturas muestran los momentos principales de los chats 1 y 2, no cada mensaje. El chat 2 completo está en [este enlace de ChatGPT](https://chatgpt.com/share/e/6aee9cf6-3f40-83e9-864d-f72022992a3d), que al comprobarlo sin sesión pidió iniciar sesión. El archivo de la conversación 3 llega hasta el momento en que se copió, antes de los últimos ajustes de documentación y de la publicación.
 
 `mcp/interactivo_01_mcp.png` es una captura de Claude Code interactivo: `/mcp` reconecta `bcrp`, y el pedido con `@` se detuvo por falta de saldo de una clave de API ajena a las corridas del proyecto. La lectura del recurso quedó demostrada en `mcp/claude_recurso_lectura.jsonl`.
