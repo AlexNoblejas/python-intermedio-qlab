@@ -56,6 +56,8 @@ El rango meta de 1 % a 3 % es un dato de política del BCRP: https://www.bcrp.go
 - Departamentos frente a la Sesión 16: diferencia máxima 0,049 pp (Amazonas), según `mapas/pobreza_departamento_vs_referencia.csv`. No se ajustó ningún valor.
 - Por personas con `facpob07`, la tasa nacional es 27,53 %, urbana 24,74 % y rural 39,44 %. Las tasas difieren de las de la sumaria en décimas por la unidad y el factor, y las dos están dentro de sus tolerancias de validación. No hay discrepancias sin explicar.
 
+**Sobre los conteos absolutos.** Los totales de personas salen de sumar los factores de expansión de la ENAHO: 9,51 millones de personas pobres. El INEI publica 9 395 000 para 2024 (nota de Andina del 8 de mayo de 2025). La tasa coincide, pero el conteo difiere cerca de 1,2 %. Por eso conviene leer los conteos de este informe como aproximados y apoyarse en las tasas y las participaciones.
+
 ## 4. Visualizaciones
 
 BCRP: inflación de Lima a 12 meses con banda meta de 1 % a 3 %.
@@ -103,3 +105,27 @@ Mapa de pobreza por departamento (25 unidades, Lima y Callao separados).
 - **Salidas:** `salidas/validacion.txt`, `salidas/indicadores.csv`, `salidas/personas_2024.parquet`, `mapas/pobreza_departamento_vs_referencia.csv`.
 - **Figuras y mapa:** `figuras/bcrp_PN01273PM_2020-01_2024-12.png`, `figuras/pobreza_area_2024.png`, `figuras/pobreza_departamento_barras_2024.png`, `figuras/concentracion_pobres_departamento_2024.png`, `mapas/pobreza_departamento.png`.
 - **Serie BCRP:** `PN01273PM`, 2020-01 a 2024-12, consultada con `buscar_series`, `resumen`, `episodios_fuera_de_rango` y `graficar_serie`.
+
+## 8. Verificación de resultados y manejo de errores
+
+Seis afirmaciones se comprobaron fuera del agente, de ambas fuentes. El detalle está en [`auditoria/VERIFICACIONES_MANUALES.md`](../auditoria/VERIFICACIONES_MANUALES.md).
+
+| Afirmación | Valor calculado | Referencia | Fuente de la verificación | Resultado |
+|---|---:|---:|---|---|
+| Máximo de inflación, 2022-06 | 8,81 % | 8,81 % | Tabla web del BCRP | Coincide |
+| Meses sobre 3 %, 2020-2024 | 34 | 34 | Conteo en la tabla web del BCRP | Coincide |
+| Pobreza nacional 2024 | 27,58 % | 27,6 % | Cifra del INEI citada por Andina | Coincide al redondear |
+| Pobreza urbana y rural 2024 | 24,81 % y 39,30 % | 24,8 % y 39,3 % | Cifra del INEI citada por Andina | Coinciden al redondear |
+| Cajamarca y Loreto 2024 | 45,01 % y 42,97 % | 45 % y 43 % | Andina y referencia de la Sesión 16 | Coinciden al redondear |
+| Participación de Lima en las personas pobres | 32,11 % | 32,11 % | Segundo cálculo directo sobre el `.dta` | Coincide |
+
+**Diferencia observada.** Por personas con `facpob07`, las tasas nacional, urbana y rural son 27,53 %, 24,74 % y 39,44 %. La diferencia se debe a la unidad de análisis y al factor, y se conserva sin ajustar.
+
+**Errores encontrados y cómo se trataron.**
+- Con pedidos seguidos, el BCRP responde una página HTML en lugar de datos. El servidor espera y reintenta; si sigue fallando, devuelve un error explícito y no una cifra.
+- Un código inexistente devuelve un error que lo nombra (`XX999`), y un rango inválido se rechaza. Ambos casos tienen pruebas en `mcp/`.
+- Si una validación de la ENAHO falla, `limpiar.py` se detiene sin guardar la base, y las Skills de gráficos y mapas no corren sin `RESULTADO: APROBADO`.
+
+## 9. Origen de este documento
+
+Las secciones 1 a 7 las escribió el agente en la ejecución registrada en `evidencias_ia/integracion/claude_integracion.jsonl`. El original está en `evidencias_ia/integracion/informe_final_original_del_agente.md`. En la revisión posterior se agregaron solo la nota sobre los conteos absolutos y las secciones 8 y 9; no se cambió ninguna cifra del agente.

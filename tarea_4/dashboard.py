@@ -31,25 +31,25 @@ c.metric("Departamentos", f"{sum(df.nivel=='Departamento')}/25")
 
 t1, t2, t3 = st.tabs(["Indicadores y graficos", "Mapa territorial", "BCRP e investigacion"])
 with t1:
-    grupo = st.selectbox("Desagregacion", ["Area", "Sexo", "Departamento"])
-    sub = df.loc[df.nivel == grupo, ["codigo", "pobreza_pct"]].set_index("codigo")
+    grupo = st.selectbox("Desagregacion", ["Area", "Sexo", "Edad", "Departamento"])
+    sub = df.loc[df.nivel == grupo, ["nombre", "pobreza_pct"]].set_index("nombre")
     st.bar_chart(sub)
-    st.dataframe(df.loc[df.nivel == grupo], hide_index=True, use_container_width=True)
+    st.dataframe(df.loc[df.nivel == grupo], hide_index=True, width="stretch")
     for imagen in ["pobreza_area_2024.png", "pobreza_sexo_2024.png", "pobreza_departamento_barras_2024.png"]:
         ruta = ROOT / "figuras" / imagen
         if ruta.exists():
-            st.image(str(ruta), caption=imagen, use_container_width=True)
+            st.image(str(ruta), caption=imagen, width="stretch")
 with t2:
     archivo = ROOT / "mapas/pobreza_departamento.png"
     if archivo.exists():
-        st.image(str(archivo), use_container_width=True)
+        st.image(str(archivo), width="stretch")
     else:
         st.warning("Mapa aun no generado. Ejecutar la skill mapeando-enaho.")
 with t3:
     figuras = sorted((ROOT / "figuras").glob("bcrp_*.png"))
     if figuras:
         for figura in figuras:
-            st.image(str(figura), caption=figura.stem, use_container_width=True)
+            st.image(str(figura), caption=figura.stem, width="stretch")
     else:
         st.info("Falta graficar una serie oficial mediante graficar_serie del servidor MCP.")
     informe = ROOT / "informes/informe_final.md"

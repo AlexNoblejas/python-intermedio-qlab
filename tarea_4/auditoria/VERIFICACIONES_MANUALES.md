@@ -17,5 +17,5 @@ Cada afirmación se comprobó fuera del agente: en la tabla web del BCRP, que no
 
 - **Método de personas:** con residentes habituales y `facpob07`, las mismas tasas dan 27.53 %, 24.74 % y 39.44 %. La diferencia se debe a la unidad de análisis y al factor, no a un error; está explicada en `.claude/skills/limpiando-enaho/reference.md`.
 - **Fuente del INEI:** no se pudo abrir el informe técnico del INEI desde la sesión. Las cifras se cotejaron con Andina, la agencia estatal de noticias, que las atribuye expresamente al INEI, y con la referencia de la Sesión 16.
-- **Personas pobres en números absolutos:** el INEI publica 9,395,000 personas; la suma de los factores da unos 9.51 millones. Por eso el informe usa porcentajes y participaciones, no conteos absolutos.
-- **Rango meta:** el rango de 1 % a 3 % está en la [página de política monetaria del BCRP](https://www.bcrp.gob.pe/politica-monetaria/).
+- **Personas pobres en números absolutos:** el INEI publica 9,395,000 personas; la suma de los factores da unos 9.51 millones. La diferencia es de cerca de 1,2 %. El informe lo advierte y pide leer sus conteos como aproximados.
+- **Rango meta:** el rango de 1 % a 3 % está en la [página de política monetaria del BCRP](https://www.bcrp.gob.pe/politica-monetaria/), revisada el 6 de noviembre de 2026.
