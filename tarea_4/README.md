@@ -177,6 +177,6 @@ Fueron 4 herramientas MCP y 3 Skills en 98 segundos. Traza: [`claude_integracion
 | `skills/` | Invocación manual, activación natural y encadenamiento |
 | `integracion/` | La ejecución única, su auditoría y el informe original del agente |
 | `evaluacion/` | Las 20 trazas y las 10 del experimento extra |
-| `desarrollo/` | Sesión de Claude Code y capturas del chat de planificación; el alcance exacto está en [`LEEME.md`](evidencias_ia/LEEME.md) |
+| `desarrollo/` | Sesión de Claude Code y capturas de los chats de claude.ai y ChatGPT; el alcance exacto está en [`LEEME.md`](evidencias_ia/LEEME.md) |
 
 Las verificaciones manuales están en [`auditoria/VERIFICACIONES_MANUALES.md`](auditoria/VERIFICACIONES_MANUALES.md); el cumplimiento requisito por requisito, en [`auditoria/MATRIZ_CUMPLIMIENTO.md`](auditoria/MATRIZ_CUMPLIMIENTO.md); y el prompt que guio el cierre, en [`auditoria/PROMPT_MAESTRO.md`](auditoria/PROMPT_MAESTRO.md).
