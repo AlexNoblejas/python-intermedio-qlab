@@ -28,7 +28,8 @@ def sanear(texto: str) -> tuple[str, int]:
             if m.group(0) in PERMITIDOS:
                 return m.group(0)
             total += 1
-            return reemplazo
+            # En JSON, un correo tras \\n empieza con esa n: se conserva para no romper el escape.
+            return m.group(0)[0] + reemplazo if m.start() and m.string[m.start() - 1] == "\\" else reemplazo
         texto = patron.sub(cambiar, texto)
     return texto, total
 

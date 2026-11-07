@@ -151,7 +151,7 @@ El modo sin herramientas se abstuvo en todo. Al quitarle el permiso explícito d
 - Con pedidos seguidos, el BCRP responde HTML en lugar de JSON; el servidor espera y reintenta.
 
 **Abiertos**
-- Con `claude -p`, `@bcrp:...` no adjunta el recurso. Se demostró la lectura con `ReadMcpResourceTool`; el uso literal de `@` requiere una sesión interactiva.
+- Con `claude -p`, `@bcrp:...` no adjunta el recurso. La lectura se demostró con `ReadMcpResourceTool`. El intento interactivo con `@` conectó `bcrp`, pero no tiene respuesta registrada (ver `evidencias_ia/LEEME.md`).
 - En 2 de los 6 pedidos del experimento que necesitaban la ENAHO, el modelo corrió el script de la Skill sin invocarla.
 
 ## 11. Ejemplo de una ejecución completa
@@ -177,6 +177,6 @@ Fueron 4 herramientas MCP y 3 Skills en 98 segundos. Traza: [`claude_integracion
 | `skills/` | Invocación manual, activación natural y encadenamiento |
 | `integracion/` | La ejecución única, su auditoría y el informe original del agente |
 | `evaluacion/` | Las 20 trazas y las 10 del experimento extra |
-| `desarrollo/` | Conversaciones de desarrollo |
+| `desarrollo/` | Sesión de Claude Code y capturas del chat de planificación; el alcance exacto está en [`LEEME.md`](evidencias_ia/LEEME.md) |
 
 Las verificaciones manuales están en [`auditoria/VERIFICACIONES_MANUALES.md`](auditoria/VERIFICACIONES_MANUALES.md); el cumplimiento requisito por requisito, en [`auditoria/MATRIZ_CUMPLIMIENTO.md`](auditoria/MATRIZ_CUMPLIMIENTO.md); y el prompt que guio el cierre, en [`auditoria/PROMPT_MAESTRO.md`](auditoria/PROMPT_MAESTRO.md).

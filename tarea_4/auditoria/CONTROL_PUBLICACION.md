@@ -16,8 +16,8 @@ El control indica presencia de evidencias; la docente puede evaluar su calidad a
 - [x] Conversaciones IA y evidencias completas: Auditar que incluya historiales de desarrollo y no solo trazas de las pruebas
 - [x] Skills: invocacion manual, natural y encadenada: evidencias_ia/skills/resumen_skills.json
 - [x] Comparacion del experimento: evaluacion/comparacion.md
-- [ ] Historial de desarrollo con asistentes: evidencias_ia/desarrollo/
+- [x] Historial de desarrollo con asistentes: evidencias_ia/desarrollo/
 
-**Controles completos: 14/15**
+**Controles completos: 15/15**
 
 **No subir** si falta una prueba obligatoria o una evidencia verificada.

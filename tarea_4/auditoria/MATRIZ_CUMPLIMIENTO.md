@@ -8,7 +8,7 @@ Cada fila es un requisito de la consigna, con su evidencia. Es una autoevaluaci�
 |---|---:|---|---|
 | `buscar_series`, `serie`, `resumen` | 2.0 | `mcp/server.py`; `evidencias_ia/mcp/cliente_mcp.json` | Cumplido |
 | Herramienta propia útil, validada y documentada | 1.0 | `episodios_fuera_de_rango`, cotejada con la API en `mcp/test_herramienta_propia.py` | Cumplido |
-| Recurso y prompt accesibles | 1.0 | `claude_recurso_lectura.jsonl`, `claude_prompt.jsonl` | Cumplido; el `@` literal está pendiente de una sesión interactiva |
+| Recurso y prompt accesibles | 1.0 | `claude_recurso_lectura.jsonl`, `claude_prompt.jsonl` | Cumplido por `ReadMcpResourceTool` y `/mcp__bcrp__informe`; `@` sin respuesta registrada (ver `evidencias_ia/LEEME.md`) |
 | `.mcp.json` e integración con Claude Code | | `.mcp.json`; `claude_natural.jsonl` (código, periodo y fuente) | Cumplido |
 | 8 pruebas originales sin cambios y 2 propias: `10 passed` | 1.0 | `evidencias_ia/mcp/pruebas_10.txt`, `contrato_docente.txt` | Cumplido |
 
@@ -30,7 +30,7 @@ Cada fila es un requisito de la consigna, con su evidencia. Es una autoevaluaci�
 | Pregunta propia con ambas fuentes y plan | 0.5 | `README.md`; `PROMPT_AGENTE.md`; traza | Cumplido |
 | Una ejecución con 2 o más herramientas MCP y 2 o más Skills | 2.0 | `evidencias_ia/integracion/auditoria_traza.json`: 4 MCP y 3 Skills | Cumplido |
 | Informe con 7 secciones, 3 hallazgos, gráfico BCRP, gráfico ENAHO y mapa | 1.5 | `informes/informe_final.md` | Cumplido |
-| 3 o más cifras verificadas de ambas fuentes y manejo de errores | 1.0 | `auditoria/VERIFICACIONES_MANUALES.md`: 6 cifras; sección 8 del informe | **Falta la confirmación del estudiante** |
+| 3 o más cifras verificadas de ambas fuentes y manejo de errores | 1.0 | `auditoria/VERIFICACIONES_MANUALES.md`: 6 cifras; sección 8 del informe | Cumplido; revisado por el estudiante |
 
 ## Parte 4. Evaluación y reproducibilidad (4 puntos)
 
@@ -40,13 +40,13 @@ Cada fila es un requisito de la consigna, con su evidencia. Es una autoevaluaci�
 | Dos modos, mismas preguntas, sesiones independientes, sin fugas | 1.5 | `evaluacion/resultados.csv`, 20 trazas | Cumplido |
 | Análisis de aciertos, errores, herramientas y tiempo | 0.5 | `evaluacion/comparacion.md` | Cumplido |
 | README con 12 puntos | 1.0 | `README.md` | Cumplido |
-| Conversaciones completas de IA | | `evidencias_ia/desarrollo/` | **Falta el historial previo a esta sesión** |
+| Conversaciones completas de IA | | `evidencias_ia/desarrollo/` | Sesión de Claude Code completa y 3 capturas del chat de planificación; el alcance exacto está en `evidencias_ia/LEEME.md` |
 
 ## Antes de entregar
 
 | Requisito | Estado |
 |---|---|
-| Sin microdatos, credenciales ni datos personales en lo publicable | Revisado con `scripts/sanear_evidencias.py`; el estudiante debe revisar las conversaciones |
+| Sin microdatos, credenciales ni datos personales en lo publicable | Revisado con `scripts/sanear_evidencias.py` y a mano en las capturas |
 | Commits descriptivos | Cumplido, solo locales |
 | Repositorio público y enlaces funcionando | **Pendiente: requiere push** |
 | Comentario de entrega en el Issue | **Pendiente: `ENTREGA_GITHUB.md` listo para pegar** |

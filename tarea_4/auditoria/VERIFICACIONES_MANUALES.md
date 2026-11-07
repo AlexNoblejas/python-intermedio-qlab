@@ -2,7 +2,7 @@
 
 Cada afirmación se comprobó fuera del agente: en la tabla web del BCRP, que no es la API del servidor MCP, y en notas que atribuyen las cifras al INEI. Las hizo Claude Code en la sesión de desarrollo el 6 de noviembre de 2026.
 
-**Confirmación del estudiante:** abrir los enlaces y marcar aquí cuando los haya revisado: `[ ]`
+**Confirmación del estudiante:** abrir los enlaces y marcar aquí cuando los haya revisado: `[REVISADO]`
 
 | N.º | Afirmación y origen | Valor calculado | Valor de referencia | Fuente | Método | Diferencia | Veredicto |
 |---:|---|---:|---:|---|---|---:|---|
