@@ -1,0 +1,2 @@
+Coincidencia exacta tras normalizar fin de linea y espacios finales.
+APROBADO: contrato original conservado.

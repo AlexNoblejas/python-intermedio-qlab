@@ -1,0 +1,112 @@
+{
+  "herramientas": [
+    "buscar_series",
+    "serie",
+    "resumen",
+    "comparar_series",
+    "episodios_fuera_de_rango",
+    "graficar_serie"
+  ],
+  "plantillas_de_recurso": [
+    "bcrp://serie/{codigo}"
+  ],
+  "prompts": [
+    "informe"
+  ],
+  "buscar_series": [
+    {
+      "codigo": "PN01273PM",
+      "nombre": "Índice de precios Lima Metropolitana (var% 12 meses) - IPC",
+      "categoria": "Inflación",
+      "frecuencia": "Mensual",
+      "inicio": "Ene-1950",
+      "actualizada": "2026-10-08"
+    },
+    {
+      "codigo": "PN09821PM",
+      "nombre": "Índice de precios Lima Metropolitana (var% 12 meses) - IPC Importado",
+      "categoria": "Inflación",
+      "frecuencia": "Mensual",
+      "inicio": "Ene-1992",
+      "actualizada": "2026-10-08"
+    },
+    {
+      "codigo": "PN01279PM",
+      "nombre": "Índice de precios Lima Metropolitana (var% 12 meses) - IPC Subyacente",
+      "categoria": "Inflación",
+      "frecuencia": "Mensual",
+      "inicio": "Ene-1993",
+      "actualizada": "2026-10-08"
+    }
+  ],
+  "resumen": {
+    "codigo": "PN01273PM",
+    "nombre": "Índice de precios Lima Metropolitana (var% 12 meses) - IPC",
+    "frecuencia": "Mensual",
+    "desde": "2020-01",
+    "hasta": "2024-12",
+    "n": 60,
+    "primero": {
+      "periodo": "2020-01",
+      "valor": 1.88835605229068
+    },
+    "ultimo": {
+      "periodo": "2024-12",
+      "valor": 1.96630270142824
+    },
+    "cambio": 0.07794664913756,
+    "variacion_pct": 4.1277517046113426,
+    "promedio": 4.466355969076364,
+    "maximo": {
+      "periodo": "2022-06",
+      "valor": 8.81263294388897
+    },
+    "minimo": {
+      "periodo": "2020-06",
+      "valor": 1.59873239164688
+    },
+    "fuente": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01273PM/json/2020-1/2024-12"
+  },
+  "episodios_fuera_de_rango": {
+    "codigo": "PN01273PM",
+    "nombre": "Índice de precios Lima Metropolitana (var% 12 meses) - IPC",
+    "frecuencia": "Mensual",
+    "rango": {
+      "minimo": 1.0,
+      "maximo": 3.0
+    },
+    "n_observaciones": 60,
+    "n_sobre": 34,
+    "n_bajo": 0,
+    "n_dentro": 26,
+    "pct_fuera": 56.666666666666664,
+    "episodios_fuera": [
+      {
+        "tipo": "sobre",
+        "desde": "2021-06",
+        "hasta": "2024-03",
+        "n": 34,
+        "extremo": 8.81263294388897
+      }
+    ],
+    "episodio_mas_largo": {
+      "tipo": "sobre",
+      "desde": "2021-06",
+      "hasta": "2024-03",
+      "n": 34,
+      "extremo": 8.81263294388897
+    },
+    "fuente": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01273PM/json/2020-1/2024-12",
+    "advertencia": "Descripcion de la serie; no identifica causas."
+  },
+  "recurso": {
+    "codigo": "PN01273PM",
+    "nombre": "Índice de precios Lima Metropolitana (var% 12 meses) - IPC",
+    "categoria": "Inflación",
+    "frecuencia": "Mensual",
+    "inicio": "Ene-1950",
+    "actualizada": "2026-10-08",
+    "fuente": "https://estadisticas.bcrp.gob.pe/estadisticas/series/metadata"
+  },
+  "prompt": "Investiga 'inflacion de Lima' con cifras del BCRP. Primero usa buscar_series, luego serie o resumen, y graficar_serie si procede. Cita nombre, codigo, periodo, frecuencia, unidad y URL. Calcula solo con herramientas. Si hay datos ausentes, dilo; no inventes cifras ni infieras causalidad."
+}

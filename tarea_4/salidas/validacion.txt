@@ -1,0 +1,24 @@
+Validacion ENAHO 2024
+Metodo por hogares: sumaria, factor07 x mieperho (reproduce la tasa oficial del INEI).
+Metodo por personas: residentes habituales, facpob07, merge m:1.
+
+APROBADO | Residentes habituales: 108664 | 108664
+APROBADO | Pobreza nacional por personas (facpob07): +/-0.1 pp de 27.6 | 27.5287%
+APROBADO | 25 departamentos | 25
+APROBADO | Lima (15) y Callao (07) por separado | 07,15
+APROBADO | Sin personas duplicadas | conglome+vivienda+hogar+codperso
+APROBADO | Pesos de persona positivos | facpob07
+APROBADO | Urbana por personas cercana a 24.8 (+/-0.5) | 24.735%
+APROBADO | Rural por personas cercana a 39.3 (+/-0.5) | 39.442%
+APROBADO | Filas del modulo 02: 117721 | 117721
+APROBADO | Hogares unicos en la sumaria: 33691 | 33691
+APROBADO | Pobreza nacional por sumaria (factor07 x mieperho): +/-0.1 pp de 27.6 | 27.5795%
+APROBADO | Urbana por sumaria: +/-0.1 pp de 24.8 | 24.807%
+APROBADO | Rural por sumaria: +/-0.1 pp de 39.3 | 39.303%
+APROBADO | Pobreza extrema por sumaria: +/-0.1 pp de 5.5 | 5.505%
+APROBADO | Factor de expansion aplicado: poblacion representada entre 34 y 35 millones | 34,482,700 personas
+APROBADO | La tasa ponderada no es el promedio simple de hogares | ponderada 27.58% / sin ponderar 20.22%
+APROBADO | Departamentos contra la referencia de la Sesion 16: difieren como maximo 0.1 pp | maximo 0.049 pp
+
+RESULTADO: APROBADO
+Nota: los valores de referencia son controles; no se ajusta ningun resultado para alcanzarlos.

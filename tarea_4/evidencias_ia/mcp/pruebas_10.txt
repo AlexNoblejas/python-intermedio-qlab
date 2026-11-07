@@ -1,0 +1,21 @@
+# uv run pytest -q mcp -v  (2026-11-06 21:07)
+============================= test session starts =============================
+platform win32 -- Python 3.12.16, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\alexa\Videos\Python Intermedio\Tareas\tarea_4\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\alexa\Videos\Python Intermedio\Tareas\tarea_4
+configfile: pyproject.toml
+plugins: anyio-4.16.0, platformdirs-4.14.5
+collecting ... collected 10 items
+
+mcp/test_herramienta_propia.py::test_episodios_coinciden_con_la_api_oficial PASSED [ 10%]
+mcp/test_herramienta_propia.py::test_episodios_rechaza_rango_invalido_y_codigo_inexistente PASSED [ 20%]
+mcp/test_server.py::test_buscar_encuentra_el_ipc PASSED                  [ 30%]
+mcp/test_server.py::test_cuatro_herramientas_como_minimo PASSED          [ 40%]
+mcp/test_server.py::test_serie_mensual PASSED                            [ 50%]
+mcp/test_server.py::test_serie_diaria PASSED                             [ 60%]
+mcp/test_server.py::test_resumen_sin_cuentas_a_mano PASSED               [ 70%]
+mcp/test_server.py::test_codigo_inexistente_da_un_error_claro PASSED     [ 80%]
+mcp/test_server.py::test_un_recurso PASSED                               [ 90%]
+mcp/test_server.py::test_un_prompt PASSED                                [100%]
+
+============================= 10 passed in 12.96s =============================

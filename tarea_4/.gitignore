@@ -1,0 +1,16 @@
+# Datos brutos y bases individuales
+/datos/*
+!/datos/.gitkeep
+/salidas/personas_*.parquet
+# Entorno y sesiones
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.log
+.env
+.env.*
+.claude/settings.local.json
+# Sistemas operativos
+.DS_Store
+Thumbs.db
