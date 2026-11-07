@@ -1,27 +1,25 @@
-### Tarea 4 - Individual
+### Tarea 4 – Individual
 
-**Estudiante:** [Nombre completo] (@[usuario_git])
+**Estudiante:** Alexander Noblejas (@AlexNoblejas)
 
-**Pregunta de investigacion:** Como evoluciono la inflacion de Lima a 12 meses entre 2020 y 2024 y que desigualdades territoriales presentaba la pobreza monetaria peruana en 2024?
+**Pregunta de investigación:** Entre 2020 y 2024, ¿cuánto tiempo estuvo la inflación de Lima a 12 meses fuera del rango meta del BCRP (1 % a 3 %) y, en 2024, dónde era más alta la pobreza monetaria y dónde vivía la mayor parte de las personas pobres, por área y por departamento?
 
-**Repositorio de GitHub:** [enlace publico]
+**Repositorio de GitHub:** https://github.com/AlexNoblejas/python-intermedio-qlab/tree/main/tarea_4
 
-**Informe final:** [enlace directo a informes/informe_final.md]
+**Informe final:** https://github.com/AlexNoblejas/python-intermedio-qlab/blob/main/tarea_4/informes/informe_final.md
 
-**Pruebas MCP:** [XX]/10 aprobadas (indicar ejecucion y evidencia)
+**Pruebas MCP:** 10/10 aprobadas (https://github.com/AlexNoblejas/python-intermedio-qlab/blob/main/tarea_4/evidencias_ia/mcp/pruebas_10.txt)
 
-**Validacion ENAHO:**
-- Pobreza nacional 2024: [XX.X] %
-- Residentes habituales: [XX,XXX]
-- Unidades territoriales procesadas: [XX]/25
+**Validación ENAHO:**
+- Pobreza nacional 2024: 27.6 % (27.58 % con sumaria y factor07 × mieperho; 27.53 % con personas y facpob07)
+- Residentes habituales: 108,664
+- Unidades territoriales procesadas: 25/25 (diferencia máxima de 0.049 puntos con la referencia de la Sesión 16)
 
-**Evaluacion del agente:**
-- Sin MCP/Skills: [X]/10 respuestas correctas
-- Con MCP/Skills: [X]/10 respuestas correctas
-- Resultados completos: [enlace a evaluacion/resultados.csv]
+**Evaluación del agente:**
+- Sin MCP/Skills: 0/10 respuestas correctas (10 no contestadas, 0 incorrectas)
+- Con MCP/Skills: 10/10 respuestas correctas
+- Resultados completos: https://github.com/AlexNoblejas/python-intermedio-qlab/blob/main/tarea_4/evaluacion/resultados.csv
 
-**Evidencia de integracion MCP + Skills:** [enlace al registro de ejecucion]
+**Evidencia de integración MCP + Skills:** https://github.com/AlexNoblejas/python-intermedio-qlab/blob/main/tarea_4/evidencias_ia/integracion/auditoria_integracion.md
 
-**Evidencias de uso de IA:** [enlace a la carpeta de conversaciones completas]
-
-**IMPORTANTE:** completar solo con valores de ejecucion real; no publicar marcadores vacios.
+**Evidencias de uso de IA:** https://github.com/AlexNoblejas/python-intermedio-qlab/tree/main/tarea_4/evidencias_ia

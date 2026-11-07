@@ -1,13 +1,13 @@
-# Evidencias de uso de IA: obligatorias para la Tarea 4
+# Evidencias del uso de inteligencia artificial
 
-Guardar aqui (o enlazar a carpeta publica en README) registros completos de todas
-las conversaciones utilizadas en MCP, Skills, integracion, evaluacion y depuracion.
+Registros reales de las conversaciones y ejecuciones del proyecto, en orden por carpeta. Antes de publicarlos se ocultaron claves, tokens y correos con `scripts/sanear_evidencias.py`.
 
-No bastan capturas aisladas de resultados. Exportar historias completas en orden
-cronologico (TXT/MD/JSON/HTML) o capturas legibles y numeradas.
+| Carpeta | Qué contiene | Cómo se generó |
+|---|---|---|
+| `desarrollo/` | Conversaciones de desarrollo con asistentes | Exportación de cada conversación |
+| `mcp/` | Pruebas, cotejo con el profesor, cliente MCP y sesiones con Claude Code | `pytest`, `scripts/probar_mcp_cliente.py` |
+| `skills/` | Invocación manual, activación natural y encadenamiento | `scripts/probar_skills.py` |
+| `integracion/` | Ejecución única de MCP y Skills, su auditoría y el informe original del agente | `scripts/probar_integracion.py` |
+| `evaluacion/` | 20 trazas del experimento y 10 del experimento extra | `evaluacion/evaluar.py` |
 
-REVISAR ANTES DE PUBLICAR: ocultar claves, tokens, contrasenas, nombres privados,
-datos personales y documentos confidenciales. Nunca subir archivos `.env`.
-
-No se incorporan transcripciones ficticias al proyecto. Exportar la conversacion
-real de desarrollo con ChatGPT y las sesiones posteriores con Claude Code.
+Los archivos `.jsonl` son la salida `stream-json` de Claude Code: un evento por línea, con cada llamada a herramienta y su resultado.

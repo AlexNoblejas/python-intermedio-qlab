@@ -1,0 +1,5 @@
+id,modo,cifras_correctas,distingue_fuentes_y_periodos,evita_causalidad,veredicto,observacion
+09,con,si,si,si,acierta,"Separa serie mensual de Lima y encuesta anual nacional; dice que no se puede concluir causalidad."
+09,sin,no contesta,si,si,no contesta,"Razonamiento correcto, pero sin ninguna cifra."
+10,con,si,si,si,acierta con observacion,"Cifras e interpretacion correctas. Error menor de redaccion: dice que cuatro meses de 2024 pertenecen al episodio; fueron tres (enero a marzo)."
+10,sin,no contesta,si,si,no contesta,"Razonamiento correcto, pero sin ninguna cifra."

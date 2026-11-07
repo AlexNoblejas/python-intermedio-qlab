@@ -38,6 +38,8 @@ INSTRUCCION = (
     "Da cada cifra en la unidad que pide la pregunta. En interpretacion explica los limites de la respuesta y "
     "evita afirmar causalidad no probada. En fuentes incluye la URL o ruta que permita verificar la cifra.\n\n"
 )
+SALIDA_FACIL = "Si falta una fuente o no puedes comprobar el valor, devuelve null: nunca estimes. "
+assert SALIDA_FACIL in INSTRUCCION
 CAMPOS = ["id", "tipo", "modo", "pregunta", "esperado_bcrp", "esperado_enaho", "obtenido_bcrp", "obtenido_enaho",
           "tolerancia_bcrp", "tolerancia_enaho", "interpretacion", "fuentes", "herramientas_observadas",
           "skills_observadas", "correcto_numerico", "resultado", "revision_manual_mixta", "segundos", "modelo",
@@ -122,9 +124,10 @@ def detalles_de_traza(salida: str) -> dict:
     return {"modelo": modelo, "skills": sorted(skills), "fuga": fuga}
 
 
-def construir_comando(pregunta: str, modo: str, modelo: str, espacio: Path | None = None) -> list[str]:
+def construir_comando(pregunta: str, modo: str, modelo: str, espacio: Path | None = None,
+                      instruccion: str = INSTRUCCION) -> list[str]:
     """--tools restringe solo las herramientas integradas; el control apaga aparte MCP y Skills."""
-    cmd = ["claude", "-p", INSTRUCCION + pregunta, "--output-format", "stream-json", "--verbose",
+    cmd = ["claude", "-p", instruccion + pregunta, "--output-format", "stream-json", "--verbose",
            "--json-schema", json.dumps(ESQUEMA), "--no-session-persistence", "--model", modelo,
            "--setting-sources", "project,local"]  # sin plugins ni ajustes personales en ambos modos
     if modo == "sin":
@@ -140,7 +143,7 @@ def construir_comando(pregunta: str, modo: str, modelo: str, espacio: Path | Non
     return cmd
 
 
-def preguntar(pregunta: str, modo: str, modelo: str):
+def preguntar(pregunta: str, modo: str, modelo: str, instruccion: str = INSTRUCCION):
     """Cada pregunta corre en su propia sesion y su propia carpeta temporal."""
     carpeta = Path(tempfile.mkdtemp(prefix=f"eval_{modo}_"))
     try:
@@ -148,7 +151,7 @@ def preguntar(pregunta: str, modo: str, modelo: str):
             espacio_limpio.crear(carpeta)
         start = time.perf_counter()
         try:
-            proceso = subprocess.run(construir_comando(pregunta, modo, modelo, carpeta), text=True, encoding="utf-8",
+            proceso = subprocess.run(construir_comando(pregunta, modo, modelo, carpeta, instruccion), text=True, encoding="utf-8",
                                      errors="replace", stdin=subprocess.DEVNULL, capture_output=True, timeout=600, cwd=carpeta,
                                      env=espacio_limpio.entorno())
             salida, errores, rc = proceso.stdout, proceso.stderr, proceso.returncode
@@ -169,12 +172,37 @@ def cargar_previos() -> list[dict]:
         return list(csv.DictReader(f))
 
 
+def experimento_sin_salida_facil(preguntas: list[dict], modelo: str) -> None:
+    """Sin herramientas y sin permiso explicito de abstenerse: mide si el modelo inventa cifras."""
+    carpeta = EVIDENCIA / "sin_salida_facil"
+    carpeta.mkdir(parents=True, exist_ok=True)
+    instruccion = INSTRUCCION.replace(SALIDA_FACIL, "")
+    filas = []
+    for pregunta in preguntas:
+        data, tools, sec, rc, salida, errores = preguntar(pregunta["pregunta"], "sin", modelo, instruccion)
+        (carpeta / f"{pregunta['id']}.jsonl").write_text(salida, encoding="utf-8")
+        correcto, _ = puntuacion(pregunta, data.get("bcrp"), data.get("enaho"), data.get("interpretacion", ""))
+        resultado = clasificar(pregunta, data.get("bcrp"), data.get("enaho"), correcto)
+        filas.append({"id": pregunta["id"], "tipo": pregunta["tipo"], "esperado_bcrp": pregunta["verdad_bcrp"],
+                      "esperado_enaho": pregunta["verdad_enaho"], "obtenido_bcrp": data.get("bcrp"),
+                      "obtenido_enaho": data.get("enaho"), "resultado": resultado, "segundos": sec,
+                      "interpretacion": data.get("interpretacion", ""), "fuentes": data.get("fuentes", ""),
+                      "returncode": rc})
+        print(pregunta["id"], resultado, data.get("bcrp"), data.get("enaho"), flush=True)
+    with (ROOT / "evaluacion" / "resultados_sin_salida_facil.csv").open("w", encoding="utf-8", newline="") as f:
+        escritor = csv.DictWriter(f, fieldnames=list(filas[0]))
+        escritor.writeheader()
+        escritor.writerows(filas)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--modelo", default="sonnet")
     parser.add_argument("--modos", nargs="+", choices=["sin", "con"], default=["sin", "con"])
     parser.add_argument("--solo", nargs="*", help="Ids a correr; conserva los demas resultados")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--sin-salida-facil", action="store_true",
+                        help="Experimento extra: modo sin, quitando la frase que permite responder null")
     args = parser.parse_args()
     with ARCHIVO.open(encoding="utf-8", newline="") as f:
         preguntas = list(csv.DictReader(f))
@@ -190,6 +218,9 @@ def main():
         return
     if not shutil.which("claude"):
         raise SystemExit("No esta instalada la CLI claude. Instalar Claude Code y autenticarse primero.")
+    if args.sin_salida_facil:
+        experimento_sin_salida_facil(preguntas, args.modelo)
+        return
     EVIDENCIA.mkdir(parents=True, exist_ok=True)
     filas = {(r["id"], r["modo"]): r for r in cargar_previos()}
     for pregunta in preguntas:
