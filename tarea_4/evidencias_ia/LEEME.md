@@ -4,7 +4,7 @@ Registros reales de las conversaciones y ejecuciones del proyecto, en orden por 
 
 | Carpeta | Qué contiene | Cómo se generó |
 |---|---|---|
-| `desarrollo/` | Conversaciones de desarrollo con asistentes | Exportación de cada conversación |
+| `desarrollo/` | Conversaciones de desarrollo con asistentes | Copia de la sesión y capturas |
 | `mcp/` | Pruebas, cotejo con el profesor, cliente MCP y sesiones con Claude Code | `pytest`, `scripts/probar_mcp_cliente.py` |
 | `skills/` | Invocación manual, activación natural y encadenamiento | `scripts/probar_skills.py` |
 | `integracion/` | Ejecución única de MCP y Skills, su auditoría y el informe original del agente | `scripts/probar_integracion.py` |

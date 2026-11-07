@@ -40,7 +40,7 @@ Cada fila es un requisito de la consigna, con su evidencia. Es una autoevaluaci�
 | Dos modos, mismas preguntas, sesiones independientes, sin fugas | 1.5 | `evaluacion/resultados.csv`, 20 trazas | Cumplido |
 | Análisis de aciertos, errores, herramientas y tiempo | 0.5 | `evaluacion/comparacion.md` | Cumplido |
 | README con 12 puntos | 1.0 | `README.md` | Cumplido |
-| Conversaciones completas de IA | | `evidencias_ia/desarrollo/` | Sesión de Claude Code completa y 3 capturas del chat de planificación; el alcance exacto está en `evidencias_ia/LEEME.md` |
+| Conversaciones completas de IA | | `evidencias_ia/desarrollo/` | Sesión de Claude Code y 3 capturas del chat de planificación; el alcance exacto está en `evidencias_ia/LEEME.md` |
 
 ## Antes de entregar
 
