@@ -149,7 +149,7 @@ def preguntar(pregunta: str, modo: str, modelo: str):
         start = time.perf_counter()
         try:
             proceso = subprocess.run(construir_comando(pregunta, modo, modelo, carpeta), text=True, encoding="utf-8",
-                                     errors="replace", capture_output=True, timeout=600, cwd=carpeta,
+                                     errors="replace", stdin=subprocess.DEVNULL, capture_output=True, timeout=600, cwd=carpeta,
                                      env=espacio_limpio.entorno())
             salida, errores, rc = proceso.stdout, proceso.stderr, proceso.returncode
         except subprocess.TimeoutExpired as e:

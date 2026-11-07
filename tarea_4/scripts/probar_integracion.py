@@ -105,7 +105,7 @@ def main():
         (OUT / "mcp_solo_bcrp.json").write_text(json.dumps(espacio_limpio.SOLO_BCRP, indent=2), encoding="utf-8")
         inicio = time.perf_counter()
         proc = subprocess.run(construir_comando(prompt, args.modelo), cwd=ROOT, text=True, encoding="utf-8",
-                              errors="replace", capture_output=True, timeout=1800, env=espacio_limpio.entorno())
+                              errors="replace", stdin=subprocess.DEVNULL, capture_output=True, timeout=1800, env=espacio_limpio.entorno())
         duracion, rc = round(time.perf_counter() - inicio, 2), proc.returncode
         registro = proc.stdout
         (OUT / "claude_integracion.stderr.txt").write_text(proc.stderr, encoding="utf-8")

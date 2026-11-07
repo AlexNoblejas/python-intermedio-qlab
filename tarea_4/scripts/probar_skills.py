@@ -70,7 +70,7 @@ def main():
         inicio = time.perf_counter()
         try:
             proceso = subprocess.run(comando(pedido, args.modelo, carpeta), cwd=carpeta, text=True, encoding="utf-8",
-                                     errors="replace", capture_output=True, timeout=900, env=espacio_limpio.entorno())
+                                     errors="replace", stdin=subprocess.DEVNULL, capture_output=True, timeout=900, env=espacio_limpio.entorno())
             (OUT / f"{nombre}.jsonl").write_text(proceso.stdout, encoding="utf-8")
             (OUT / f"{nombre}.stderr.txt").write_text(proceso.stderr, encoding="utf-8")
             vistas = skills_en_traza(proceso.stdout)

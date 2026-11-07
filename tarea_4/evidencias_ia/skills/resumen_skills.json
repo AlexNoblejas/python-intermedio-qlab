@@ -1,0 +1,64 @@
+{
+  "manual_limpiando": {
+    "pedido": "/limpiando-enaho",
+    "skills_invocadas": [],
+    "skills_esperadas": [
+      "limpiando-enaho"
+    ],
+    "archivos_creados": {
+      "salidas/validacion.txt": true
+    },
+    "codigo_salida": 0,
+    "segundos": 27.4,
+    "cumple": true
+  },
+  "natural_limpiando": {
+    "pedido": "Limpia los módulos de la ENAHO 2024 del INEI y dime si la base quedó validada.",
+    "skills_invocadas": [
+      "limpiando-enaho"
+    ],
+    "skills_esperadas": [
+      "limpiando-enaho"
+    ],
+    "archivos_creados": {
+      "salidas/validacion.txt": true
+    },
+    "codigo_salida": 0,
+    "segundos": 29.6,
+    "cumple": true
+  },
+  "natural_grafico": {
+    "pedido": "Grafica la pobreza monetaria urbana y rural con ENAHO 2024.",
+    "skills_invocadas": [
+      "graficando-enaho",
+      "limpiando-enaho"
+    ],
+    "skills_esperadas": [
+      "graficando-enaho",
+      "limpiando-enaho"
+    ],
+    "archivos_creados": {
+      "figuras/pobreza_area_2024.png": true
+    },
+    "codigo_salida": 0,
+    "segundos": 40.8,
+    "cumple": true
+  },
+  "natural_mapa": {
+    "pedido": "Haz un mapa de la pobreza monetaria por departamento con ENAHO 2024.",
+    "skills_invocadas": [
+      "mapeando-enaho",
+      "limpiando-enaho"
+    ],
+    "skills_esperadas": [
+      "limpiando-enaho",
+      "mapeando-enaho"
+    ],
+    "archivos_creados": {
+      "mapas/pobreza_departamento.png": true
+    },
+    "codigo_salida": 0,
+    "segundos": 39.9,
+    "cumple": true
+  }
+}

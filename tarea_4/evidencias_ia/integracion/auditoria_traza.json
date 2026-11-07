@@ -1,0 +1,25 @@
+{
+  "mcp_unicos": [
+    "mcp__bcrp__buscar_series",
+    "mcp__bcrp__episodios_fuera_de_rango",
+    "mcp__bcrp__graficar_serie",
+    "mcp__bcrp__resumen"
+  ],
+  "skills_unicas": [
+    "graficando-enaho",
+    "limpiando-enaho",
+    "mapeando-enaho"
+  ],
+  "n_mcp": 4,
+  "n_skills": 3,
+  "otros": [
+    "Bash",
+    "Write"
+  ],
+  "hay_resultado": true,
+  "resultado_sin_error": true,
+  "cumple_minimo_de_invocaciones": true,
+  "duracion_segundos": 98.02,
+  "codigo_salida": 0,
+  "estado": "APROBADO_PARCIAL"
+}

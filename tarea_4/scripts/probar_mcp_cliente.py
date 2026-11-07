@@ -50,7 +50,7 @@ def con_claude(modelo: str) -> None:
                "--no-session-persistence", "--setting-sources", "project,local", "--strict-mcp-config",
                "--mcp-config", str(ROOT / ".mcp.json"), "--allowedTools", "mcp__bcrp__*"]
         proceso = subprocess.run(cmd, cwd=ROOT, text=True, encoding="utf-8", errors="replace",
-                                 capture_output=True, timeout=600, env=espacio_limpio.entorno())
+                                 stdin=subprocess.DEVNULL, capture_output=True, timeout=600, env=espacio_limpio.entorno())
         (OUT / f"claude_{nombre}.jsonl").write_text(proceso.stdout, encoding="utf-8")
         (OUT / f"claude_{nombre}.stderr.txt").write_text(proceso.stderr, encoding="utf-8")
         print(nombre, "codigo de salida", proceso.returncode, flush=True)
